@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
-import { withHOC } from "./withHOC";
+import { withHOC } from "../utils/withHOC";
 
 const style: React.CSSProperties = {
   width: "100%",
