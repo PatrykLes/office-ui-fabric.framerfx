@@ -1,0 +1,21 @@
+{
+	"main": "dist/index.js",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/react": "^16.8"
+	},
+	"peerDependencies": {
+		"framer": "^1.0",
+		"react": "^16.8"
+	},
+	"framer": {
+		"id": "da4a8bae-6e37-4745-b990-8b8e310abdad"
+	},
+	"author": "Fernando Hurtado",
+	"dependencies": {
+		"office-ui-fabric-react": "^7.28.2"
+	},
+  "scripts": {
+		"format": "prettier --write './code/**'"
+	}
+}
