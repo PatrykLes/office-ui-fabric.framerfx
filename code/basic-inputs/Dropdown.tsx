@@ -3,63 +3,41 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
-
 const InnerDropdown: React.SFC = props => {
-  return <System.Dropdown {...props} style={style} />;
+  return (
+    <System.Dropdown
+      {...props}
+      options={props.options.map(option => ({
+        key: option,
+        text: option
+      }))}
+    />
+  );
 };
 
 export const Dropdown = withHOC(InnerDropdown);
 
 Dropdown.defaultProps = {
   width: 150,
-  height: 50
+  height: 60
 };
 
 addPropertyControls(Dropdown, {
-  placeHolder: {
-    title: "PlaceHolder",
+  label: { title: "Label", defaultValue: "Dropdown", type: ControlType.String },
+  errorMessage: {
+    title: "ErrorMessage",
     defaultValue: "",
     type: ControlType.String
   },
-  dropdownWidth: { title: "DropdownWidth", type: ControlType.Number },
-  responsiveMode: { title: "ResponsiveMode", type: ControlType.Number },
+  placeholder: {
+    title: "Placeholder",
+    defaultValue: "Select an option",
+    type: ControlType.String
+  },
   multiSelect: {
     title: "MultiSelect",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  multiSelectDelimiter: {
-    title: "MultiSelectDelimiter",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  notifyOnReselect: {
-    title: "NotifyOnReselect",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  isDisabled: {
-    title: "IsDisabled",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  label: { title: "Label", defaultValue: "", type: ControlType.String },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
-  id: { title: "Id", defaultValue: "", type: ControlType.String },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
-  defaultSelectedKey: {
-    title: "DefaultSelectedKey",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  selectedKey: {
-    title: "SelectedKey",
-    defaultValue: "",
-    type: ControlType.String
   },
   disabled: {
     title: "Disabled",
@@ -71,13 +49,14 @@ addPropertyControls(Dropdown, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  errorMessage: {
-    title: "ErrorMessage",
+  dropdownWidth: { title: "DropdownWidth", type: ControlType.Number },
+  defaultSelectedKey: {
+    title: "DefaultSelectedKey",
     defaultValue: "",
     type: ControlType.String
   },
-  placeholder: {
-    title: "Placeholder",
+  selectedKey: {
+    title: "SelectedKey",
     defaultValue: "",
     type: ControlType.String
   },
@@ -85,5 +64,13 @@ addPropertyControls(Dropdown, {
     title: "OpenOnKeyboardFocus",
     defaultValue: false,
     type: ControlType.Boolean
+  },
+  options: {
+    title: "Options",
+    type: ControlType.Array,
+    defaultValue: ["Option A", "Option B"],
+    propertyControl: {
+      type: ControlType.String
+    }
   }
 });
