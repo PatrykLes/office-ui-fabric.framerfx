@@ -3,7 +3,7 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const InnerSearchBox: React.SFC = ({ children, ...props }) => {
+const InnerSearchBox: React.SFC = ({ ["children"]: _, ...props }) => {
   return <System.SearchBox {...props} />;
 };
 
