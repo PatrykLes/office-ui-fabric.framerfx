@@ -1,25 +1,25 @@
 import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
-import { withHOC } from "./utils/withHOC";
+import { withHOC } from "../utils/withHOC";
 
 const style: React.CSSProperties = {
   width: "100%",
   height: "100%"
 };
 
-const InnerPrimaryButton: React.SFC = props => {
-  return <System.PrimaryButton {...props} style={style} />;
+const InnerDefaultButton: React.SFC = props => {
+  return <System.DefaultButton {...props} style={style} />;
 };
 
-export const PrimaryButton = withHOC(InnerPrimaryButton);
+export const DefaultButton = withHOC(InnerDefaultButton);
 
-PrimaryButton.defaultProps = {
+DefaultButton.defaultProps = {
   width: 150,
   height: 50
 };
 
-addPropertyControls(PrimaryButton, {
+addPropertyControls(DefaultButton, {
   href: { title: "Href", defaultValue: "", type: ControlType.String },
   primary: { title: "Primary", defaultValue: false, type: ControlType.Boolean },
   uniqueId: { title: "UniqueId", defaultValue: "", type: ControlType.String },
