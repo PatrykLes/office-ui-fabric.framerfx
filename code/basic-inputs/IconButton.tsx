@@ -8,18 +8,18 @@ const style: React.CSSProperties = {
   height: "100%"
 };
 
-const InnerButton: React.SFC = props => {
-  return <System.Button {...props} style={style} />;
+const InnerIconButton: React.SFC = props => {
+  return <System.IconButton {...props} style={style} />;
 };
 
-export const Button = withHOC(InnerButton);
+export const IconButton = withHOC(InnerIconButton);
 
-Button.defaultProps = {
+IconButton.defaultProps = {
   width: 150,
   height: 50
 };
 
-addPropertyControls(Button, {
+addPropertyControls(IconButton, {
   href: { title: "Href", defaultValue: "", type: ControlType.String },
   primary: { title: "Primary", defaultValue: false, type: ControlType.Boolean },
   uniqueId: { title: "UniqueId", defaultValue: "", type: ControlType.String },
