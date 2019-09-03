@@ -3,48 +3,48 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
-
 const InnerChoiceGroup: React.SFC = props => {
-  return <System.ChoiceGroup {...props} style={style} />;
+  return (
+    <System.ChoiceGroup
+      {...props}
+      options={props.options.map(option => ({
+        key: option,
+        text: option
+      }))}
+    />
+  );
 };
 
 export const ChoiceGroup = withHOC(InnerChoiceGroup);
 
 ChoiceGroup.defaultProps = {
-  width: 150,
-  height: 50
+  width: 90,
+  height: 100
 };
 
 addPropertyControls(ChoiceGroup, {
-  defaultSelectedKey: {
-    title: "DefaultSelectedKey",
-    defaultValue: "",
-    type: ControlType.String
-  },
   selectedKey: {
     title: "SelectedKey",
-    defaultValue: "",
+    defaultValue: "Option A",
     type: ControlType.String
   },
-  label: { title: "Label", defaultValue: "", type: ControlType.String },
-  ariaLabelledBy: {
-    title: "AriaLabelledBy",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  checked: { title: "Checked", defaultValue: false, type: ControlType.Boolean },
+  label: { title: "Label", defaultValue: "Pick one", type: ControlType.String },
   disabled: {
     title: "Disabled",
     defaultValue: false,
     type: ControlType.Boolean
   },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
+  options: {
+    title: "Options",
+    type: ControlType.Array,
+    defaultValue: ["Option A", "Option B"],
+    propertyControl: {
+      type: ControlType.String
+    }
+  },
+  required: {
+    title: "Required",
+    type: ControlType.Boolean,
+    defaultValue: false
   }
 });
