@@ -24,12 +24,16 @@ const InnerDefaultButton: React.SFC = props => {
 export const DefaultButton = withHOC(InnerDefaultButton);
 
 DefaultButton.defaultProps = {
-  width: 88,
+  width: 158,
   height: 33
 };
 
 addPropertyControls(DefaultButton, {
-  text: { title: "Text", defaultValue: "Button", type: ControlType.String },
+  text: {
+    title: "Text",
+    defaultValue: "Default Button",
+    type: ControlType.String
+  },
   placeholder: {
     title: "Placeholder",
     defaultValue: "",
@@ -58,7 +62,6 @@ addPropertyControls(DefaultButton, {
   },
   checked: { title: "Checked", defaultValue: false, type: ControlType.Boolean },
   toggle: { title: "Toggle", defaultValue: false, type: ControlType.Boolean },
-  buttonType: { title: "ButtonType", type: ControlType.Number },
   split: { title: "Split", defaultValue: false, type: ControlType.Boolean },
   menuItems: {
     title: "Menu Items",
