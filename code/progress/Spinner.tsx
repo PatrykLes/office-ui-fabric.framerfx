@@ -1,6 +1,6 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
+import * as React from "react";
 import { withHOC } from "../utils/withHOC";
 
 const style: React.CSSProperties = {
@@ -21,27 +21,19 @@ Spinner.defaultProps = {
 
 addPropertyControls(Spinner, {
   type: { title: "Type", type: ControlType.Number },
-  size: { title: "Size", type: ControlType.Number },
-  label: { title: "Label", defaultValue: "", type: ControlType.String },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
-  ariaLive: {
-    title: "AriaLive",
-    options: ["off", "assertive", "polite"],
-    optionTitles: ["Off", "Assertive", "Polite"],
-    defaultValue: "off",
-    type: ControlType.Enum
+  size: {
+    title: "Size",
+    type: ControlType.Number,
+    min: 0,
+    max: 3,
+    displayStepper: true
   },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
+  label: { title: "Label", defaultValue: "Label", type: ControlType.String },
   labelPosition: {
     title: "LabelPosition",
     options: ["top", "right", "bottom", "left"],
     optionTitles: ["Top", "Right", "Bottom", "Left"],
     defaultValue: "top",
     type: ControlType.Enum
-  },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
   }
 });

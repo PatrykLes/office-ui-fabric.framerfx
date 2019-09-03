@@ -2,21 +2,21 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
-
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
+import { CenteredWrapper, centeredChildStyles } from "../utils/CenteredWrapper";
 
 const InnerShimmer: React.SFC = props => {
-  return <System.Shimmer {...props} style={style} />;
+  return (
+    <CenteredWrapper>
+      <System.Shimmer {...props} style={centeredChildStyles} />
+    </CenteredWrapper>
+  );
 };
 
 export const Shimmer = withHOC(InnerShimmer);
 
 Shimmer.defaultProps = {
-  width: 150,
-  height: 50
+  width: 100,
+  height: 18
 };
 
 addPropertyControls(Shimmer, {
@@ -31,8 +31,6 @@ addPropertyControls(Shimmer, {
     defaultValue: "",
     type: ControlType.String
   },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
   checked: { title: "Checked", defaultValue: false, type: ControlType.Boolean },
   disabled: {
     title: "Disabled",
