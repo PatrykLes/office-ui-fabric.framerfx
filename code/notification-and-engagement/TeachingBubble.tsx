@@ -3,24 +3,44 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
-
-const InnerTeachingBubble: React.SFC = props => {
-  return <System.TeachingBubble {...props} style={style} />;
+const InnerTeachingBubble: React.SFC<any> = ({ content, ...props }) => {
+  const ref = React.useRef();
+  const [visible, setVisible] = React.useState(true);
+  if (!visible) {
+    return null;
+  }
+  return (
+    <>
+      <div ref={ref} style={{ width: "100%", height: "100%" }}></div>
+      <System.TeachingBubble
+        target={ref}
+        onDismiss={e => setVisible(false)}
+        {...props}
+      >
+        {content}
+      </System.TeachingBubble>
+    </>
+  );
 };
 
 export const TeachingBubble = withHOC(InnerTeachingBubble);
 
 TeachingBubble.defaultProps = {
-  width: 150,
-  height: 50
+  width: 25,
+  height: 25
 };
 
 addPropertyControls(TeachingBubble, {
-  headline: { title: "Headline", defaultValue: "", type: ControlType.String },
+  headline: {
+    title: "Headline",
+    defaultValue: "Headline",
+    type: ControlType.String
+  },
+  content: {
+    type: ControlType.String,
+    defaultValue:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum?"
+  },
   hasCondensedHeadline: {
     title: "HasCondensedHeadline",
     defaultValue: false,
@@ -28,50 +48,14 @@ addPropertyControls(TeachingBubble, {
   },
   hasCloseIcon: {
     title: "HasCloseIcon",
-    defaultValue: false,
+    defaultValue: true,
     type: ControlType.Boolean
   },
-  footerContent: {
-    title: "FooterContent",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  target: { title: "Target", defaultValue: "", type: ControlType.String },
   isWide: { title: "IsWide", defaultValue: false, type: ControlType.Boolean },
   hasSmallHeadline: {
     title: "HasSmallHeadline",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  ariaLabelledBy: {
-    title: "AriaLabelledBy",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  ariaDescribedBy: {
-    title: "AriaDescribedBy",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  ignoreExternalFocusing: {
-    title: "IgnoreExternalFocusing",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  forceFocusInsideTrap: {
-    title: "ForceFocusInsideTrap",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  firstFocusableSelector: {
-    title: "FirstFocusableSelector",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  closeButtonAriaLabel: {
-    title: "CloseButtonAriaLabel",
-    defaultValue: "",
-    type: ControlType.String
   },
   isClickableOutsideFocusTrap: {
     title: "IsClickableOutsideFocusTrap",
