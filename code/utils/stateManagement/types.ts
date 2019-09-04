@@ -1,36 +1,36 @@
 export interface GlobalState {
-  managedState: ManagedState
+  managedState: ManagedState;
 }
 
 export interface ManagedState {
   subscriptions: {
-    [valueId: string]: string[]
-  }
+    [valueId: string]: string[];
+  };
   values: {
-    [id: string]: any
-  }
+    [id: string]: any;
+  };
 }
 
 export enum ManagedStateActionType {
   REGISTER_SUBSCRIPTION,
   UNREGISTER_SUBSCRIPTION,
-  SET_VALUE,
+  SET_VALUE
 }
 
 export type ManagedStateActions = {
   [ManagedStateActionType.REGISTER_SUBSCRIPTION]: {
-    type: ManagedStateActionType.REGISTER_SUBSCRIPTION
-    subscriberId: string
-    valueId: string
-    initialValue?: any
-  }
+    type: ManagedStateActionType.REGISTER_SUBSCRIPTION;
+    subscriberId: string;
+    valueId: string;
+    initialValue?: any;
+  };
   [ManagedStateActionType.UNREGISTER_SUBSCRIPTION]: {
-    type: ManagedStateActionType.UNREGISTER_SUBSCRIPTION
-    subscriberId: string
-  }
+    type: ManagedStateActionType.UNREGISTER_SUBSCRIPTION;
+    subscriberId: string;
+  };
   [ManagedStateActionType.SET_VALUE]: {
-    type: ManagedStateActionType.SET_VALUE
-    valueId: string
-    value: any
-  }
-}
+    type: ManagedStateActionType.SET_VALUE;
+    valueId: string;
+    value: any;
+  };
+};

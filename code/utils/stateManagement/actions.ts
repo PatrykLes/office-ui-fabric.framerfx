@@ -1,4 +1,4 @@
-import { ManagedStateActions, ManagedStateActionType } from "./types"
+import { ManagedStateActions, ManagedStateActionType } from "./types";
 
 export const registerSubscription = (
   subscriberId: string,
@@ -9,23 +9,26 @@ export const registerSubscription = (
     type: ManagedStateActionType.REGISTER_SUBSCRIPTION,
     subscriberId,
     valueId,
-    initialValue,
-  }
-}
+    initialValue
+  };
+};
 
 export const unregisterSubscription = (
   subscriberId: string
 ): ManagedStateActions[ManagedStateActionType.UNREGISTER_SUBSCRIPTION] => {
   return {
     type: ManagedStateActionType.UNREGISTER_SUBSCRIPTION,
-    subscriberId,
-  }
-}
+    subscriberId
+  };
+};
 
-export const setValue = (valueId: string, value: any): ManagedStateActions[ManagedStateActionType.SET_VALUE] => {
+export const setValue = (
+  valueId: string,
+  value: any
+): ManagedStateActions[ManagedStateActionType.SET_VALUE] => {
   return {
     type: ManagedStateActionType.SET_VALUE,
     valueId,
-    value,
-  }
-}
+    value
+  };
+};

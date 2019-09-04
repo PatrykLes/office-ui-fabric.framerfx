@@ -1,8 +1,12 @@
-import * as React from "react"
-import { useDispatch, useGlobal } from "reactn"
-import reducer from "./reducer"
-import { GlobalState } from "./types"
-import { registerSubscription, unregisterSubscription, setValue } from "./actions"
+import * as React from "react";
+import { useDispatch, useGlobal } from "reactn";
+import reducer from "./reducer";
+import { GlobalState } from "./types";
+import {
+  registerSubscription,
+  unregisterSubscription,
+  setValue
+} from "./actions";
 
 /**
  * This higher order component allows any component to have a managed state value.
@@ -14,17 +18,32 @@ import { registerSubscription, unregisterSubscription, setValue } from "./action
  * @returns A component that subscribes to a local/global state value
  */
 export const withManagedState = (Component): React.SFC<any> => {
-  return ({ shouldUseGlobalState, globalStateKey, valuePropName, ...props }) => {
-    const [globalState] = useGlobal<GlobalState>("managedState")
-    const dispatch = useDispatch<GlobalState>(reducer, "managedState")
+  return ({
+    shouldUseGlobalState,
+    globalStateKey,
+    valuePropName,
+    ...props
+  }) => {
+    const [globalState] = useGlobal<GlobalState>("managedState");
+    const dispatch = useDispatch<GlobalState>(reducer, "managedState");
 
-    const [currentShouldUseGlobalState, setCurrentShouldUseGlobalState] = React.useState(shouldUseGlobalState)
-    const [currentGlobalStateKey, setCurrentGlobalStateKey] = React.useState(globalStateKey)
+    const [
+      currentShouldUseGlobalState,
+      setCurrentShouldUseGlobalState
+    ] = React.useState(shouldUseGlobalState);
+    const [currentGlobalStateKey, setCurrentGlobalStateKey] = React.useState(
+      globalStateKey
+    );
 
-    const valueId = currentShouldUseGlobalState && !!currentGlobalStateKey ? currentGlobalStateKey : props.id
-    const initialValue = props[valuePropName]
+    const valueId =
+      currentShouldUseGlobalState && !!currentGlobalStateKey
+        ? currentGlobalStateKey
+        : props.id;
+    const initialValue = props[valuePropName];
     const currentValue =
-      globalState && globalState.values[valueId] !== undefined ? globalState.values[valueId] : initialValue
+      globalState && globalState.values[valueId] !== undefined
+        ? globalState.values[valueId]
+        : initialValue;
 
     /**
      * Registers this component as a state subscriber on mount (local & global).
@@ -32,10 +51,10 @@ export const withManagedState = (Component): React.SFC<any> => {
      * @returns A function which cleans up the subscription created on mount.
      */
     React.useEffect(() => {
-      dispatch(registerSubscription(props.id, valueId, initialValue))
+      dispatch(registerSubscription(props.id, valueId, initialValue));
 
-      return () => dispatch(unregisterSubscription(props.id))
-    }, [])
+      return () => dispatch(unregisterSubscription(props.id));
+    }, []);
 
     /**
      * Callback which cleans up the old subscription and registers the new one.
@@ -49,16 +68,22 @@ export const withManagedState = (Component): React.SFC<any> => {
          * gets registered, but we may support subscribing to multiple values
          * in the future so it makes sense to separate these actions.
          */
-        dispatch(unregisterSubscription(props.id))
+        dispatch(unregisterSubscription(props.id));
 
         /**
          * Register the new subscriber with it's initial value. As the new globalStateKey
          * could be blank, we'll fall back to the component's ID on the canvas
          */
-        dispatch(registerSubscription(props.id, newGlobalStateKey || props.id, currentValue))
+        dispatch(
+          registerSubscription(
+            props.id,
+            newGlobalStateKey || props.id,
+            currentValue
+          )
+        );
       },
       [props.id, currentGlobalStateKey]
-    )
+    );
 
     /**
      * If the globalStateKey changes this effect ensures the old subscription is cleaned up
@@ -66,10 +91,10 @@ export const withManagedState = (Component): React.SFC<any> => {
      */
     React.useEffect(() => {
       if (globalStateKey !== currentGlobalStateKey) {
-        reRegisterSubscription(globalStateKey)
-        setCurrentGlobalStateKey(globalStateKey)
+        reRegisterSubscription(globalStateKey);
+        setCurrentGlobalStateKey(globalStateKey);
       }
-    }, [globalStateKey])
+    }, [globalStateKey]);
 
     /**
      * If the boolean property indicating whether this component should use global state changes,
@@ -77,26 +102,30 @@ export const withManagedState = (Component): React.SFC<any> => {
      */
     React.useEffect(() => {
       if (shouldUseGlobalState !== currentShouldUseGlobalState) {
-        reRegisterSubscription(shouldUseGlobalState && currentGlobalStateKey)
-        setCurrentShouldUseGlobalState(shouldUseGlobalState)
+        reRegisterSubscription(shouldUseGlobalState && currentGlobalStateKey);
+        setCurrentShouldUseGlobalState(shouldUseGlobalState);
       }
-    }, [shouldUseGlobalState, currentGlobalStateKey, currentShouldUseGlobalState])
+    }, [
+      shouldUseGlobalState,
+      currentGlobalStateKey,
+      currentShouldUseGlobalState
+    ]);
 
     /**
      * Dispatches an action to the managedState reducer which updates the value.
      */
     const onChange = React.useCallback(
       changedValue => {
-        dispatch(setValue(valueId, changedValue))
+        dispatch(setValue(valueId, changedValue));
       },
       [props.id, valueId]
-    )
+    );
 
     const updatedProps = {
       ...props,
-      [valuePropName]: currentValue,
-    }
+      [valuePropName]: currentValue
+    };
 
-    return <Component {...updatedProps} onChange={onChange} />
-  }
-}
+    return <Component {...updatedProps} onChange={onChange} />;
+  };
+};
