@@ -5,18 +5,25 @@ import * as React from "react";
 import { withHOC } from "../utils/withHOC";
 
 let cache:
-  | { width: number; height: number; styles: string }
+  | { width: number; height: number; color: string; styles: string }
   | undefined = undefined;
 
-function memoizeStyles(width: number, height: number) {
-  if (cache === undefined || cache.width !== width || cache.height !== height) {
+function memoizeStyles(width: number, height: number, color: string) {
+  if (
+    cache === undefined ||
+    cache.width !== width ||
+    cache.height !== height ||
+    cache.color !== color
+  ) {
     cache = {
       width,
       height,
+      color,
       styles: mergeStyles({
         fontSize: Math.min(width, height),
         height,
-        width
+        width,
+        color
       })
     };
   }
@@ -24,9 +31,12 @@ function memoizeStyles(width: number, height: number) {
   return cache.styles;
 }
 
-const InnerIcon: React.SFC<any> = ({ width, height, ...props }) => {
+const InnerIcon: React.SFC<any> = ({ width, height, color, ...props }) => {
   return (
-    <System.FontIcon {...props} className={memoizeStyles(width, height)} />
+    <System.FontIcon
+      {...props}
+      className={memoizeStyles(width, height, color)}
+    />
   );
 };
 
@@ -1827,5 +1837,10 @@ addPropertyControls(Icon, {
     defaultValue: "Dictionary",
     type: ControlType.Enum,
     options: iconNames
+  },
+  color: {
+    title: "Color",
+    defaultValue: "#000",
+    type: ControlType.Color
   }
 });
