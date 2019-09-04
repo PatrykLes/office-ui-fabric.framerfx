@@ -3,37 +3,21 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
-
 const InnerToggle: React.SFC = props => {
-  return <System.Toggle {...props} style={style} />;
+  return <System.Toggle {...props} />;
 };
 
 export const Toggle = withHOC(InnerToggle);
 
 Toggle.defaultProps = {
-  width: 150,
-  height: 50
+  width: 132,
+  height: 28
 };
 
 addPropertyControls(Toggle, {
-  label: { title: "Label", defaultValue: "", type: ControlType.String },
-  onText: { title: "OnText", defaultValue: "", type: ControlType.String },
-  offText: { title: "OffText", defaultValue: "", type: ControlType.String },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
-  onAriaLabel: {
-    title: "OnAriaLabel",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  offAriaLabel: {
-    title: "OffAriaLabel",
-    defaultValue: "",
-    type: ControlType.String
-  },
+  label: { title: "Label", defaultValue: "Toggle", type: ControlType.String },
+  onText: { title: "OnText", defaultValue: "On", type: ControlType.String },
+  offText: { title: "OffText", defaultValue: "Off", type: ControlType.String },
   checked: { title: "Checked", defaultValue: false, type: ControlType.Boolean },
   defaultChecked: {
     title: "DefaultChecked",
@@ -49,10 +33,5 @@ addPropertyControls(Toggle, {
     title: "InlineLabel",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
   }
 });
