@@ -8,8 +8,20 @@ const style: React.CSSProperties = {
   height: "100%"
 };
 
-const InnerTextField: React.SFC = ({ ["children"]: _, ...props }) => {
-  return <System.TextField {...props} style={style} />;
+const InnerTextField: React.SFC<any> = ({
+  ["children"]: _,
+  prefix,
+  suffix,
+  ...props
+}) => {
+  return (
+    <System.TextField
+      {...props}
+      prefix={prefix || undefined}
+      suffix={suffix || undefined}
+      style={style}
+    />
+  );
 };
 
 export const TextField = withHOC(InnerTextField);
