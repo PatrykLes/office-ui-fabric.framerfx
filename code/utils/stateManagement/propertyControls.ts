@@ -5,7 +5,7 @@ import { PropertyControls, ControlType } from "framer";
  *
  * @TODO - Add a "Global State Scope" to allow scoping of global variables
  */
-export const UseGlobalStatePropertyControls: PropertyControls = {
+export const WithManagedStatePropertyControls: PropertyControls = {
   shouldUseGlobalState: {
     title: "Global Variable",
     type: ControlType.Boolean,
