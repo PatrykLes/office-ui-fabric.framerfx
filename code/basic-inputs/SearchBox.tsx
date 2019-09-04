@@ -3,37 +3,24 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
-
-const InnerSearchBox: React.SFC = props => {
-  return <System.SearchBox {...props} style={style} />;
+const InnerSearchBox: React.SFC = ({ ["children"]: _, ...props }) => {
+  return <System.SearchBox {...props} />;
 };
 
 export const SearchBox = withHOC(InnerSearchBox);
 
 SearchBox.defaultProps = {
-  width: 150,
-  height: 50
+  width: 274,
+  height: 32
 };
 
 addPropertyControls(SearchBox, {
   placeholder: {
     title: "Placeholder",
-    defaultValue: "",
+    defaultValue: "Search",
     type: ControlType.String
   },
-  labelText: { title: "LabelText", defaultValue: "", type: ControlType.String },
   value: { title: "Value", defaultValue: "", type: ControlType.String },
-  defaultValue: {
-    title: "DefaultValue",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
   underlined: {
     title: "Underlined",
     defaultValue: false,

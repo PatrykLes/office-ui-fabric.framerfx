@@ -8,7 +8,7 @@ const style: React.CSSProperties = {
   height: "100%"
 };
 
-const InnerTextField: React.SFC = props => {
+const InnerTextField: React.SFC = ({ ["children"]: _, ...props }) => {
   return <System.TextField {...props} style={style} />;
 };
 
@@ -51,8 +51,8 @@ addPropertyControls(TextField, {
     defaultValue: "",
     type: ControlType.String
   },
-  prefix: { title: "Prefix", defaultValue: "", type: ControlType.String },
-  suffix: { title: "Suffix", defaultValue: "", type: ControlType.String },
+  prefix: { title: "Prefix", type: ControlType.String },
+  suffix: { title: "Suffix", type: ControlType.String },
   defaultValue: {
     title: "DefaultValue",
     defaultValue: "",
@@ -78,13 +78,6 @@ addPropertyControls(TextField, {
     title: "DeferredValidationTime",
     type: ControlType.Number
   },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
-  inputClassName: {
-    title: "InputClassName",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
   validateOnFocusIn: {
     title: "ValidateOnFocusIn",
     defaultValue: false,
@@ -99,11 +92,6 @@ addPropertyControls(TextField, {
     title: "ValidateOnLoad",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  autoComplete: {
-    title: "AutoComplete",
-    defaultValue: "",
-    type: ControlType.String
   },
   mask: { title: "Mask", defaultValue: "", type: ControlType.String },
   maskChar: { title: "MaskChar", defaultValue: "", type: ControlType.String },

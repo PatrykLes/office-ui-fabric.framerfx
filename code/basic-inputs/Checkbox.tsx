@@ -16,18 +16,21 @@ export const Checkbox = withHOC(InnerCheckbox);
 
 Checkbox.defaultProps = {
   width: 150,
-  height: 50
+  height: 23
 };
 
 addPropertyControls(Checkbox, {
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
+  label: {
+    title: "Label",
+    defaultValue: "Standard Checkbox",
+    type: ControlType.String
+  },
   checked: { title: "Checked", defaultValue: false, type: ControlType.Boolean },
   defaultChecked: {
     title: "DefaultChecked",
     defaultValue: false,
     type: ControlType.Boolean
   },
-  label: { title: "Label", defaultValue: "", type: ControlType.String },
   disabled: {
     title: "Disabled",
     defaultValue: false,
@@ -38,21 +41,8 @@ addPropertyControls(Checkbox, {
     options: ["start", "end"],
     optionTitles: ["Start", "End"],
     defaultValue: "start",
-    type: ControlType.Enum
+    type: ControlType.SegmentedEnum
   },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
-  ariaLabelledBy: {
-    title: "AriaLabelledBy",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  ariaDescribedBy: {
-    title: "AriaDescribedBy",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  ariaPositionInSet: { title: "AriaPositionInSet", type: ControlType.Number },
-  ariaSetSize: { title: "AriaSetSize", type: ControlType.Number },
   indeterminate: {
     title: "Indeterminate",
     defaultValue: false,
@@ -62,10 +52,5 @@ addPropertyControls(Checkbox, {
     title: "DefaultIndeterminate",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
   }
 });
