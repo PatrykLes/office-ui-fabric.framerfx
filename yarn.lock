@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@framer/framer.device-skin-apple-iphone8-silver@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.framer.com/@framer/framer.device-skin-apple-iphone8-silver/-/@framer/framer.device-skin-apple-iphone8-silver-1.0.0.tgz#f120cfe6d8cf96ead1f656ab7eeddb23d0644ac1"
+  integrity sha512-EWPkH8T/pHrt84uOGRXGFhsfymXI9g9o55PbHcuPEW6c3kyUZULfFcaMdvd+InFIyS46oREybbxHzk7E3o859w==
+
 "@microsoft/load-themed-styles@^1.7.13":
   version "1.9.20"
   resolved "https://registry.yarnpkg.com/@microsoft/load-themed-styles/-/load-themed-styles-1.9.20.tgz#be46eaa6721f239ff4685f5bf7a34c84c0fd3200"
@@ -126,7 +131,19 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
+reactn@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/reactn/-/reactn-2.2.2.tgz#005e2cc18fb244cce2706c0912e29c5ac2288b04"
+  integrity sha512-qyGkOw7e+IRsUVyMC/uFNH44B+4WfMIZJ9er7xNZT35c20S11pEihjaP60j6BNo4ZW4dJ+xiSZNhuY9IFfKt8Q==
+  dependencies:
+    use-force-update "^1.0.5"
+
 tslib@^1.7.1:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
+
+use-force-update@^1.0.5:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/use-force-update/-/use-force-update-1.0.7.tgz#f5e672633f5a398b25c33b2287150918bcb3526b"
+  integrity sha512-k5dppYhO+I5X/cd7ildbrzeMZJkWwdAh5adaIk0qKN2euh7J0h2GBGBcB4QZ385eyHHnp7LIygvebdRx3XKdwA==
