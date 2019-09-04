@@ -2,16 +2,23 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
+import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
+import { compose } from "../utils/compose";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
 
 const InnerSlider: React.SFC = props => {
   return <System.Slider {...props} />;
 };
 
-export const Slider = withHOC(InnerSlider);
+export const Slider = compose(
+  withHOC,
+  withManagedState
+)(InnerSlider);
 
 Slider.defaultProps = {
   width: 150,
-  height: 50
+  height: 50,
+  valuePropName: "value"
 };
 
 addPropertyControls(Slider, {
@@ -19,12 +26,6 @@ addPropertyControls(Slider, {
     title: "Label",
     defaultValue: "Slider Label",
     type: ControlType.String
-  },
-  defaultValue: {
-    title: "DefaultValue",
-    type: ControlType.Number,
-    defaultValue: 1,
-    displayStepper: true
   },
   value: {
     title: "Value",
@@ -74,5 +75,6 @@ addPropertyControls(Slider, {
     title: "OriginFromZero",
     defaultValue: false,
     type: ControlType.Boolean
-  }
+  },
+  ...WithManagedStatePropertyControls
 });

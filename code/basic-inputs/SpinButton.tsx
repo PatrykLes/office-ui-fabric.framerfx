@@ -3,16 +3,50 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 import { Position } from "office-ui-fabric-react/lib/utilities/positioning";
+import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
+import { compose } from "../utils/compose";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
 
 const InnerSpinButton: React.SFC = props => {
-  return <System.SpinButton {...props} />;
+  const onIncrement = React.useCallback(
+    value => {
+      const parsedValue = parseInt(value, 10);
+      if (parsedValue === props.max) {
+        return;
+      }
+      props.onChange(parsedValue + 1);
+    },
+    [props.onChange, props.max]
+  );
+
+  const onDecrement = React.useCallback(
+    value => {
+      const parsedValue = parseInt(value, 10);
+      if (parsedValue === props.min) {
+        return;
+      }
+      props.onChange(parsedValue - 1);
+    },
+    [props.onChange, props.min]
+  );
+  return (
+    <System.SpinButton
+      onIncrement={onIncrement}
+      onDecrement={onDecrement}
+      {...props}
+    />
+  );
 };
 
-export const SpinButton = withHOC(InnerSpinButton);
+export const SpinButton = compose(
+  withHOC,
+  withManagedState
+)(InnerSpinButton);
 
 SpinButton.defaultProps = {
   width: 211,
-  height: 34
+  height: 34,
+  valuePropName: "value"
 };
 
 const positionKeys = Object.keys(Position).filter((key: string | number) =>
@@ -41,11 +75,6 @@ addPropertyControls(SpinButton, {
     defaultValue: 1,
     displayStepper: true
   },
-  defaultValue: {
-    title: "DefaultValue",
-    defaultValue: "",
-    type: ControlType.String
-  },
   disabled: {
     title: "Disabled",
     defaultValue: false,
@@ -58,5 +87,6 @@ addPropertyControls(SpinButton, {
     options: positionKeys.map(key => String(Position[key])),
     optionTitles: positionKeys
   },
-  precision: { title: "Precision", type: ControlType.Number }
+  precision: { title: "Precision", type: ControlType.Number },
+  ...WithManagedStatePropertyControls
 });

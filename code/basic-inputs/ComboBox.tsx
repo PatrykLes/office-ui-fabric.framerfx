@@ -2,11 +2,19 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
+import { compose } from "../utils/compose";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
+import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
 
 const InnerComboBox: React.SFC = props => {
+  const onChange = React.useCallback(
+    (e, option) => props.onChange(option.key),
+    [props.onChange]
+  );
   return (
     <System.ComboBox
       {...props}
+      onChange={onChange}
       options={props.options.map(option => ({
         key: option,
         text: option
@@ -16,15 +24,24 @@ const InnerComboBox: React.SFC = props => {
   );
 };
 
-export const ComboBox = withHOC(InnerComboBox);
+export const ComboBox = compose(
+  withHOC,
+  withManagedState
+)(InnerComboBox);
 
 ComboBox.defaultProps = {
   width: 200,
-  height: 66
+  height: 66,
+  valuePropName: "selectedKey"
 };
 
 addPropertyControls(ComboBox, {
   label: { title: "Label", defaultValue: "ComboBox", type: ControlType.String },
+  selectedKey: {
+    title: "SelectedKey",
+    defaultValue: "",
+    type: ControlType.String
+  },
   placeholder: {
     title: "Placeholder",
     defaultValue: "",
@@ -91,19 +108,10 @@ addPropertyControls(ComboBox, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  defaultSelectedKey: {
-    title: "DefaultSelectedKey",
-    defaultValue: "",
-    type: ControlType.String
-  },
   openOnKeyboardFocus: {
     title: "OpenOnKeyboardFocus",
     defaultValue: false,
     type: ControlType.Boolean
   },
-  selectedKey: {
-    title: "SelectedKey",
-    defaultValue: "",
-    type: ControlType.String
-  }
+  ...WithManagedStatePropertyControls
 });

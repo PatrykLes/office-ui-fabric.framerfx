@@ -2,21 +2,26 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
-
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
+import { compose } from "../utils/compose";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
+import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
 
 const InnerCheckbox: React.SFC = props => {
-  return <System.Checkbox {...props} style={style} />;
+  const onChange = React.useCallback((e, checked) => props.onChange(checked), [
+    props.onChange
+  ]);
+  return <System.Checkbox {...props} onChange={onChange} />;
 };
 
-export const Checkbox = withHOC(InnerCheckbox);
+export const Checkbox = compose(
+  withHOC,
+  withManagedState
+)(InnerCheckbox);
 
 Checkbox.defaultProps = {
   width: 150,
-  height: 23
+  height: 23,
+  valuePropName: "checked"
 };
 
 addPropertyControls(Checkbox, {
@@ -26,11 +31,6 @@ addPropertyControls(Checkbox, {
     type: ControlType.String
   },
   checked: { title: "Checked", defaultValue: false, type: ControlType.Boolean },
-  defaultChecked: {
-    title: "DefaultChecked",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
   disabled: {
     title: "Disabled",
     defaultValue: false,
@@ -48,9 +48,5 @@ addPropertyControls(Checkbox, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  defaultIndeterminate: {
-    title: "DefaultIndeterminate",
-    defaultValue: false,
-    type: ControlType.Boolean
-  }
+  ...WithManagedStatePropertyControls
 });
