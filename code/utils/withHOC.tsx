@@ -1,5 +1,6 @@
-import * as React from "react";
 import { initializeIcons } from "@uifabric/icons";
+import * as React from "react";
+import { CenteredWrapper } from "./CenteredWrapper";
 
 declare global {
   interface Window {
@@ -14,6 +15,10 @@ export function withHOC(Component): React.SFC {
   }
 
   return (props: any) => {
-    return <Component {...props} />;
+    return (
+      <CenteredWrapper>
+        <Component {...props} />
+      </CenteredWrapper>
+    );
   };
 }

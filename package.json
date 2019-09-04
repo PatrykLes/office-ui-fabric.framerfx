@@ -2,6 +2,7 @@
 	"main": "dist/index.js",
 	"license": "MIT",
 	"devDependencies": {
+		"@framer/framer.device-skin-apple-iphone8-silver": "^1.0.0",
 		"@types/react": "^16.8"
 	},
 	"peerDependencies": {
@@ -15,7 +16,7 @@
 	"dependencies": {
 		"office-ui-fabric-react": "^7.28.2"
 	},
-  "scripts": {
+	"scripts": {
 		"format": "prettier --write './code/**'"
 	}
 }

@@ -2,14 +2,20 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
+import { centeredChildStyles } from "../utils/CenteredWrapper";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
+const InnerMessageBar: React.SFC<any> = ({ title, message, ...props }) => {
+  const [visible, setVisible] = React.useState(true);
 
-const InnerMessageBar: React.SFC = props => {
-  return <System.MessageBar {...props} style={style} />;
+  if (!visible) {
+    return null;
+  }
+
+  return (
+    <System.MessageBar onDismiss={e => setVisible(false)} {...props}>
+      <b>{title}</b> {message}
+    </System.MessageBar>
+  );
 };
 
 export const MessageBar = withHOC(InnerMessageBar);
@@ -20,32 +26,28 @@ MessageBar.defaultProps = {
 };
 
 addPropertyControls(MessageBar, {
-  messageBarType: { title: "MessageBarType", type: ControlType.Number },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
+  messageBarType: {
+    title: "MessageBarType",
+    type: ControlType.Number,
+    min: 0,
+    max: 5,
+    displayStepper: true,
+    defaultValue: 4
+  },
   isMultiline: {
     title: "IsMultiline",
-    defaultValue: false,
+    defaultValue: true,
     type: ControlType.Boolean
   },
-  dismissButtonAriaLabel: {
-    title: "DismissButtonAriaLabel",
-    defaultValue: "",
+  title: {
+    title: "Title",
+    defaultValue: "Title",
     type: ControlType.String
   },
-  truncated: {
-    title: "Truncated",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  overflowButtonAriaLabel: {
-    title: "OverflowButtonAriaLabel",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
+  message: {
+    title: "Message",
+    defaultValue:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. ",
     type: ControlType.String
   }
 });
