@@ -14,8 +14,8 @@ export const colors = Object.freeze({
     "office.primary": "var(--token-395710fc-2bb2-4623-bb54-4ecf586d26a5, rgb(213, 58, 0))",
     /** #252423 */
     "office.navbar.text": "var(--token-38b23bda-30b5-42f8-934b-f3fd2f51deaa, rgb(37, 36, 35))",
-    /** #F3F2F1 */
-    "office.background": "var(--token-ecc8e004-e8ba-482e-a94b-36914355c3d5, rgb(243, 242, 241))",
+    /** #FAF9F8 */
+    "office.background": "var(--token-ecc8e004-e8ba-482e-a94b-36914355c3d5, rgb(250, 249, 248))",
     /** #0072C6 */
     "office.link": "var(--token-c87338da-18c1-4873-b9dd-43e15b0c9775, rgb(0, 114, 198))",
 })

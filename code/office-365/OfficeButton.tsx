@@ -23,7 +23,7 @@ const style = {
   alignItems: "center" as "center",
   backgroundColor: colors["office.background"],
   selectors: {
-    ":hover": {
+    "&:hover": {
       backgroundColor: "white",
       boxShadow: "0 8px 16px 0 rgba(0,0,0,.1)",
       color: colors["office.link"]
@@ -47,9 +47,7 @@ const InnerOfficeButton: React.SFC<any> = ({ text, image, ...props }) => {
           background: "transparent",
           backgroundColor: "pink"
         }}
-      >
-        <OfficeLogo style={{ marginTop: "15px" }} />
-      </Frame>
+      />
       <Frame
         style={{
           width: "100%",
