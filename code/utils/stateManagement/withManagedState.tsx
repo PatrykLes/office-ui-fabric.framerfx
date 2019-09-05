@@ -82,7 +82,7 @@ export const withManagedState = (Component): React.SFC<any> => {
           )
         );
       },
-      [props.id, currentGlobalStateKey]
+      [props.id, currentValue]
     );
 
     /**
@@ -95,6 +95,16 @@ export const withManagedState = (Component): React.SFC<any> => {
         setCurrentGlobalStateKey(globalStateKey);
       }
     }, [globalStateKey]);
+
+    /**
+     * Dispatches an action to the managedState reducer which updates the value.
+     */
+    const onChange = React.useCallback(
+      changedValue => {
+        dispatch(setValue(valueId, changedValue));
+      },
+      [props.id, valueId]
+    );
 
     /**
      * If the boolean property indicating whether this component should use global state changes,
@@ -112,14 +122,19 @@ export const withManagedState = (Component): React.SFC<any> => {
     ]);
 
     /**
-     * Dispatches an action to the managedState reducer which updates the value.
+     * If the local value changes & doesn't match the managed state value,
+     * we should update the managed state value to reflect this.
+     *
+     * This effect will run if a property control is modified - the property control
+     * value should be our single source of truth if it's changed after a component mounts.
+     *
+     * @NOTE Should we only set the value if the component isn't using a globally managed state?
      */
-    const onChange = React.useCallback(
-      changedValue => {
-        dispatch(setValue(valueId, changedValue));
-      },
-      [props.id, valueId]
-    );
+    React.useEffect(() => {
+      if (initialValue !== currentValue) {
+        onChange(initialValue);
+      }
+    }, [initialValue, onChange]);
 
     const updatedProps = {
       ...props,
