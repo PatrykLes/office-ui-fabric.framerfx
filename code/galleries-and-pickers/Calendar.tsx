@@ -70,8 +70,8 @@ const InnerCalendar: React.SFC = ({ value, ...props }) => {
 export const Calendar = withHOC(InnerCalendar);
 
 Calendar.defaultProps = {
-  width: 150,
-  height: 50
+  width: 215,
+  height: 244
 };
 
 addPropertyControls(Calendar, {
