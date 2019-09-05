@@ -1,6 +1,9 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
+import * as React from "react";
+import { compose } from "../utils/compose";
+import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
 import { withHOC } from "../utils/withHOC";
 
 const InnerText: React.SFC<any> = ({ text, color, ...props }) => {
@@ -11,11 +14,15 @@ const InnerText: React.SFC<any> = ({ text, color, ...props }) => {
   );
 };
 
-export const Text = withHOC(InnerText);
+export const Text = compose(
+  withHOC,
+  withManagedState
+)(InnerText);
 
 Text.defaultProps = {
   width: 150,
-  height: 50
+  height: 50,
+  valuePropName: "text"
 };
 
 addPropertyControls(Text, {
@@ -60,5 +67,6 @@ addPropertyControls(Text, {
     type: ControlType.Enum
   },
   block: { title: "Block", defaultValue: false, type: ControlType.Boolean },
-  nowrap: { title: "Nowrap", defaultValue: false, type: ControlType.Boolean }
+  nowrap: { title: "Nowrap", defaultValue: false, type: ControlType.Boolean },
+  ...WithManagedStatePropertyControls
 });

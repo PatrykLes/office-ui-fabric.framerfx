@@ -1,10 +1,10 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
-import { withHOC } from "../utils/withHOC";
+import * as React from "react";
 import { compose } from "../utils/compose";
-import { withManagedState } from "../utils/stateManagement/withManagedState";
 import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
+import { withHOC } from "../utils/withHOC";
 
 const InnerTextField: React.SFC<any> = ({
   ["children"]: _,
@@ -21,7 +21,6 @@ const InnerTextField: React.SFC<any> = ({
       onChange={onChange}
       prefix={prefix || undefined}
       suffix={suffix || undefined}
-      style={style}
     />
   );
 };
@@ -38,18 +37,25 @@ TextField.defaultProps = {
 };
 
 addPropertyControls(TextField, {
+  label: { title: "Label", defaultValue: "", type: ControlType.String },
+  placeholder: {
+    title: "Placeholder",
+    defaultValue: "",
+    type: ControlType.String
+  },
+  description: {
+    title: "Description",
+    defaultValue: "",
+    type: ControlType.String
+  },
+  value: { title: "Value", defaultValue: "", type: ControlType.String },
   multiline: {
     title: "Multiline",
     defaultValue: false,
     type: ControlType.Boolean
   },
-  resizable: {
-    title: "Resizable",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  autoAdjustHeight: {
-    title: "AutoAdjustHeight",
+  disabled: {
+    title: "Disabled",
     defaultValue: false,
     type: ControlType.Boolean
   },
@@ -58,25 +64,10 @@ addPropertyControls(TextField, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  borderless: {
-    title: "Borderless",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  label: { title: "Label", defaultValue: "", type: ControlType.String },
-  description: {
-    title: "Description",
-    defaultValue: "",
-    type: ControlType.String
-  },
+
   prefix: { title: "Prefix", type: ControlType.String },
   suffix: { title: "Suffix", type: ControlType.String },
-  value: { title: "Value", defaultValue: "", type: ControlType.String },
-  disabled: {
-    title: "Disabled",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
+
   readOnly: {
     title: "ReadOnly",
     defaultValue: false,
@@ -87,32 +78,6 @@ addPropertyControls(TextField, {
     defaultValue: "",
     type: ControlType.String
   },
-  deferredValidationTime: {
-    title: "DeferredValidationTime",
-    type: ControlType.Number
-  },
-  validateOnFocusIn: {
-    title: "ValidateOnFocusIn",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  validateOnFocusOut: {
-    title: "ValidateOnFocusOut",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  validateOnLoad: {
-    title: "ValidateOnLoad",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  mask: { title: "Mask", defaultValue: "", type: ControlType.String },
-  maskChar: { title: "MaskChar", defaultValue: "", type: ControlType.String },
-  checked: { title: "Checked", defaultValue: false, type: ControlType.Boolean },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
-  },
+
   ...WithManagedStatePropertyControls
 });

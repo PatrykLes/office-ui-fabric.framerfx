@@ -10,7 +10,8 @@
 		"react": "^16.8"
 	},
 	"framer": {
-		"id": "da4a8bae-6e37-4745-b990-8b8e310abdad"
+		"id": "da4a8bae-6e37-4745-b990-8b8e310abdad",
+		"displayName": "Office UI Fabric"
 	},
 	"author": "Fernando Hurtado",
 	"dependencies": {
@@ -19,5 +20,7 @@
 	},
 	"scripts": {
 		"format": "prettier --write './code/**'"
-	}
+	},
+	"name": "@framer/fhur.office-ui-fabric",
+	"version": "1.0.0"
 }
