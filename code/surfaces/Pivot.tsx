@@ -26,11 +26,13 @@ Pivot.defaultProps = {
 
 addPropertyControls(Pivot, {
   tabNames: {
+    title: "Tab Names",
     type: ControlType.Array,
     defaultValue: ["First", "Second", "Third"],
     propertyControl: { type: ControlType.String }
   },
   tabs: {
+    title: "Tabs",
     type: ControlType.Array,
     propertyControl: { type: ControlType.ComponentInstance }
   }
