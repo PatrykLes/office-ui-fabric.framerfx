@@ -3,16 +3,26 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 import { RatingSize } from "office-ui-fabric-react";
+import { compose } from "../utils/compose";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
+import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
 
 const InnerRating: React.SFC = props => {
-  return <System.Rating {...props} />;
+  const onChange = React.useCallback((e, rating) => props.onChange(rating), [
+    props.onChange
+  ]);
+  return <System.Rating {...props} onChange={onChange} />;
 };
 
-export const Rating = withHOC(InnerRating);
+export const Rating = compose(
+  withHOC,
+  withManagedState
+)(InnerRating);
 
 Rating.defaultProps = {
   width: 150,
-  height: 50
+  height: 50,
+  valuePropName: "rating"
 };
 
 const ratingKeys = Object.keys(RatingSize).filter((key: string | number) =>
@@ -60,5 +70,6 @@ addPropertyControls(Rating, {
     title: "Disabled",
     defaultValue: false,
     type: ControlType.Boolean
-  }
+  },
+  ...WithManagedStatePropertyControls
 });

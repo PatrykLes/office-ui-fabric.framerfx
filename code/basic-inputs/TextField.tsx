@@ -2,11 +2,9 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
-
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
+import { compose } from "../utils/compose";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
+import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
 
 const InnerTextField: React.SFC<any> = ({
   ["children"]: _,
@@ -14,9 +12,13 @@ const InnerTextField: React.SFC<any> = ({
   suffix,
   ...props
 }) => {
+  const onChange = React.useCallback((e, value) => props.onChange(value), [
+    props.onChange
+  ]);
   return (
     <System.TextField
       {...props}
+      onChange={onChange}
       prefix={prefix || undefined}
       suffix={suffix || undefined}
       style={style}
@@ -24,11 +26,15 @@ const InnerTextField: React.SFC<any> = ({
   );
 };
 
-export const TextField = withHOC(InnerTextField);
+export const TextField = compose(
+  withHOC,
+  withManagedState
+)(InnerTextField);
 
 TextField.defaultProps = {
   width: 150,
-  height: 50
+  height: 50,
+  valuePropName: "value"
 };
 
 addPropertyControls(TextField, {
@@ -65,11 +71,6 @@ addPropertyControls(TextField, {
   },
   prefix: { title: "Prefix", type: ControlType.String },
   suffix: { title: "Suffix", type: ControlType.String },
-  defaultValue: {
-    title: "DefaultValue",
-    defaultValue: "",
-    type: ControlType.String
-  },
   value: { title: "Value", defaultValue: "", type: ControlType.String },
   disabled: {
     title: "Disabled",
@@ -112,5 +113,6 @@ addPropertyControls(TextField, {
     title: "Placeholder",
     defaultValue: "",
     type: ControlType.String
-  }
+  },
+  ...WithManagedStatePropertyControls
 });
