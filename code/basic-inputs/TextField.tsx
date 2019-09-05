@@ -6,11 +6,24 @@ import { compose } from "../utils/compose";
 import { withManagedState } from "../utils/stateManagement/withManagedState";
 import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
 
-const InnerTextField: React.SFC = ({ ["children"]: _, ...props }) => {
+const InnerTextField: React.SFC<any> = ({
+  ["children"]: _,
+  prefix,
+  suffix,
+  ...props
+}) => {
   const onChange = React.useCallback((e, value) => props.onChange(value), [
     props.onChange
   ]);
-  return <System.TextField {...props} onChange={onChange} />;
+  return (
+    <System.TextField
+      {...props}
+      onChange={onChange}
+      prefix={prefix || undefined}
+      suffix={suffix || undefined}
+      style={style}
+    />
+  );
 };
 
 export const TextField = compose(

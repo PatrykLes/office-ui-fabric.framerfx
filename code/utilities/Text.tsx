@@ -3,8 +3,12 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const InnerText: React.SFC<any> = ({ text, ...props }) => {
-  return <System.Text {...props}>{text}</System.Text>;
+const InnerText: React.SFC<any> = ({ text, color, ...props }) => {
+  return (
+    <System.Text {...props} style={{ color }}>
+      {text}
+    </System.Text>
+  );
 };
 
 export const Text = withHOC(InnerText);
@@ -16,6 +20,10 @@ Text.defaultProps = {
 
 addPropertyControls(Text, {
   text: { type: ControlType.String, defaultValue: "Text" },
+  color: {
+    type: ControlType.Color,
+    defaultValue: "#000"
+  },
   variant: {
     title: "Variant",
     options: [
