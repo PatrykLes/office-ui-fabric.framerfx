@@ -1,17 +1,8 @@
-import * as React from "react";
-import * as System from "office-ui-fabric-react";
-import {
-  ControlType,
-  PropertyControls,
-  addPropertyControls,
-  Stack,
-  Frame
-} from "framer";
-import { withHOC } from "../utils/withHOC";
+import { addPropertyControls, ControlType, Frame, Stack } from "framer";
 import { mergeStyles } from "office-ui-fabric-react";
-import { centeredChildStyles } from "../utils/CenteredWrapper";
+import * as React from "react";
 import { colors } from "../canvas";
-import { OfficeLogo } from "../assets/office-logo";
+import { withHOC } from "../utils/withHOC";
 
 const style = {
   width: "100%",

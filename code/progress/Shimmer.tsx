@@ -1,8 +1,8 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
+import * as React from "react";
+import { centeredChildStyles, CenteredWrapper } from "../utils/CenteredWrapper";
 import { withHOC } from "../utils/withHOC";
-import { CenteredWrapper, centeredChildStyles } from "../utils/CenteredWrapper";
 
 const InnerShimmer: React.SFC = props => {
   return (

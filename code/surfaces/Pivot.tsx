@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as System from "office-ui-fabric-react";
 import { addPropertyControls, ControlType, Frame } from "framer";
+import * as System from "office-ui-fabric-react";
+import * as React from "react";
 
 export const Pivot = props => {
   return (
