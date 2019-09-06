@@ -27,8 +27,7 @@ addPropertyControls(PersonaCoin, {
   },
   initialsColor: {
     title: "InitialsColor",
-    defaultValue: "",
-    type: ControlType.String
+    type: ControlType.Color
   },
   presence: {
     title: "Presence",
@@ -42,10 +41,5 @@ addPropertyControls(PersonaCoin, {
     title: "IsOutOfOffice",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
   }
 });

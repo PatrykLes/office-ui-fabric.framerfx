@@ -68,7 +68,7 @@ addPropertyControls(Persona, {
     defaultValue: "In a meeting",
     type: ControlType.String,
     hidden(props) {
-      return props["size"] >= 5;
+      return props["size"] < 4;
     }
   }
 });

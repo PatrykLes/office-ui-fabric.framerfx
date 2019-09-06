@@ -8,19 +8,9 @@ import { withHOC } from "../utils/withHOC";
 
 const InnerLink = ({ willChangeTransform, href, ...props }) => {
   return (
-    <Frame
-      background="transparent"
-      size="100%"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}
-    >
-      <System.Link {...props} href={href || undefined}>
-        {props.text}
-      </System.Link>
-    </Frame>
+    <System.Link {...props} href={href || undefined}>
+      {props.text}
+    </System.Link>
   );
 };
 
