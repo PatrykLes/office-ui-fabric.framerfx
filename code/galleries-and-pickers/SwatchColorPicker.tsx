@@ -3,13 +3,27 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
+const exampleColorSwatches: System.IColorCellProps[] = [
+  { id: "a", label: "orange", color: "#ca5010" },
+  { id: "b", label: "cyan", color: "#038387" },
+  { id: "c", label: "blueMagenta", color: "#8764b8" },
+  { id: "d", label: "magenta", color: "#881798" },
+  { id: "e", label: "white", color: "#ffffff" }
+];
 
 const InnerSwatchColorPicker: React.SFC = props => {
-  return <System.SwatchColorPicker {...props} style={style} />;
+  const [selectedColorId, setSelectedColorId] = React.useState(
+    props.selectedId
+  );
+
+  return (
+    <System.SwatchColorPicker
+      {...props}
+      selectedId={selectedColorId}
+      columnCount={5}
+      colorCells={exampleColorSwatches}
+    />
+  );
 };
 
 export const SwatchColorPicker = withHOC(InnerSwatchColorPicker);
@@ -21,8 +35,6 @@ SwatchColorPicker.defaultProps = {
 
 addPropertyControls(SwatchColorPicker, {
   columnCount: { title: "ColumnCount", type: ControlType.Number },
-  id: { title: "Id", defaultValue: "", type: ControlType.String },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
   cellShape: {
     title: "CellShape",
     options: ["circle", "square"],
@@ -34,11 +46,6 @@ addPropertyControls(SwatchColorPicker, {
     title: "SelectedId",
     defaultValue: "",
     type: ControlType.String
-  },
-  isControlled: {
-    title: "IsControlled",
-    defaultValue: false,
-    type: ControlType.Boolean
   },
   disabled: {
     title: "Disabled",
