@@ -1,6 +1,6 @@
 import { initializeIcons } from "@uifabric/icons";
 import * as React from "react";
-import { CenteredWrapper } from "./CenteredWrapper";
+import { centeredWrapper as CenteredWrapper } from "./CenteredWrapper";
 
 declare global {
   interface Window {

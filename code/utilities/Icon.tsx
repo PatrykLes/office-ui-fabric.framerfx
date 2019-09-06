@@ -3,39 +3,29 @@ import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react/lib/Icon";
 import * as React from "react";
 import { withHOC } from "../utils/withHOC";
+import { colors } from "../canvas";
 
-let cache:
-  | { width: number; height: number; color: string; styles: string }
-  | undefined = undefined;
-
-function memoizeStyles(width: number, height: number, color: string) {
-  if (
-    cache === undefined ||
-    cache.width !== width ||
-    cache.height !== height ||
-    cache.color !== color
-  ) {
-    cache = {
-      width,
-      height,
-      color,
-      styles: mergeStyles({
-        fontSize: Math.min(width, height),
-        height,
-        width,
-        color
-      })
-    };
-  }
-
-  return cache.styles;
-}
-
-const InnerIcon: React.SFC<any> = ({ width, height, color, ...props }) => {
+const InnerIcon: React.SFC<any> = ({
+  width,
+  height,
+  color,
+  hoverColor,
+  ...props
+}) => {
   return (
     <System.FontIcon
       {...props}
-      className={memoizeStyles(width, height, color)}
+      className={mergeStyles({
+        fontSize: Math.min(width, height),
+        height: `${height}px`,
+        width: `${width}px`,
+        color,
+        selectors: {
+          ":hover": {
+            color: hoverColor
+          }
+        }
+      })}
     />
   );
 };
@@ -1841,6 +1831,11 @@ addPropertyControls(Icon, {
   color: {
     title: "Color",
     defaultValue: "#000",
+    type: ControlType.Color
+  },
+  hoverColor: {
+    title: "Hover Color",
+    defaultValue: colors["exchange.primary"],
     type: ControlType.Color
   }
 });

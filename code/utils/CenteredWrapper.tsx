@@ -4,7 +4,9 @@ type Props = {
   centerLayout: "flex" | "table" | "none";
 };
 
-export const CenteredWrapper: React.FC<Props> = props => {
+// XXX: even thought centeredWrapper is a React component, we expose it using lower
+// case so framer doesn't pick it up and show it in the Components panel.
+export const centeredWrapper: React.FC<Props> = props => {
   if (props.centerLayout === "none") {
     return <>{props.children}</>;
   }
