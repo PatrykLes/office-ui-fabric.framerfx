@@ -15,7 +15,7 @@
 	},
 	"author": "Fernando Hurtado",
 	"dependencies": {
-		"office-ui-fabric-react": "^7.28.2",
+		"office-ui-fabric-react": "^7.31.0",
 		"reactn": "^2.2.2"
 	},
 	"scripts": {

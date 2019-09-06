@@ -2,9 +2,8 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "./utils/withHOC";
-import { colors } from "./canvas";
 
-const InnerPersonaCoin = ({ width, height, ...props }) => {
+const InnerPersonaCoin: React.SFC<any> = ({ width, height, ...props }) => {
   const coinSize = Math.min(width, height);
   return <System.PersonaCoin {...props} coinSize={coinSize} />;
 };
@@ -27,11 +26,8 @@ addPropertyControls(PersonaCoin, {
   },
   initialsColor: {
     title: "InitialsColor",
-    defaultValue: colors["exchange.primary"],
-    type: ControlType.Color,
-    hidden(props) {
-      return !!props["imageUrl"];
-    }
+    defaultValue: "",
+    type: ControlType.String
   },
   presence: {
     title: "Presence",
@@ -45,5 +41,10 @@ addPropertyControls(PersonaCoin, {
     title: "IsOutOfOffice",
     defaultValue: false,
     type: ControlType.Boolean
+  },
+  placeholder: {
+    title: "Placeholder",
+    defaultValue: "",
+    type: ControlType.String
   }
 });
