@@ -1,6 +1,7 @@
 // WARNING: this file is auto generated, any changes will be lost
 import { createDesignComponent, CanvasStore } from "framer"
 const canvas = CanvasStore.shared(); // CANVAS_DATA;
+export const Template_Basic_Inputs = createDesignComponent<{parentSize?:{width:number|string,height:number|string},width?:number|string,height?:number|string}>(canvas, "id_VCetNmjFO", {}, 1440,900);
 export const Template_Office = createDesignComponent<{parentSize?:{width:number|string,height:number|string},width?:number|string,height?:number|string}>(canvas, "id_HeaGnIgCV", {}, 1440,900);
 export const Template_Registration = createDesignComponent<{parentSize?:{width:number|string,height:number|string},width?:number|string,height?:number|string}>(canvas, "id_igRs33atD", {}, 1440,900);
 
