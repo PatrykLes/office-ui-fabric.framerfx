@@ -1,27 +1,26 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
+import * as React from "react";
 import { withHOC } from "../utils/withHOC";
+import { colors } from "../canvas";
 
-const exampleColorSwatches: System.IColorCellProps[] = [
-  { id: "a", label: "orange", color: "#ca5010" },
-  { id: "b", label: "cyan", color: "#038387" },
-  { id: "c", label: "blueMagenta", color: "#8764b8" },
-  { id: "d", label: "magenta", color: "#881798" },
-  { id: "e", label: "white", color: "#ffffff" }
-];
-
-const InnerSwatchColorPicker: React.SFC = props => {
+const InnerSwatchColorPicker = ({ cellSize, colors, ...props }) => {
   const [selectedColorId, setSelectedColorId] = React.useState(
     props.selectedId
   );
+
+  const colorCells = colors.map(color => {
+    return { id: color, color, label: color };
+  });
 
   return (
     <System.SwatchColorPicker
       {...props}
       selectedId={selectedColorId}
-      columnCount={5}
-      colorCells={exampleColorSwatches}
+      cellHeight={cellSize}
+      cellWidth={cellSize}
+      columnCount={colorCells.length}
+      colorCells={colorCells}
     />
   );
 };
@@ -29,12 +28,11 @@ const InnerSwatchColorPicker: React.SFC = props => {
 export const SwatchColorPicker = withHOC(InnerSwatchColorPicker);
 
 SwatchColorPicker.defaultProps = {
-  width: 150,
-  height: 50
+  width: 200,
+  height: 100
 };
 
 addPropertyControls(SwatchColorPicker, {
-  columnCount: { title: "ColumnCount", type: ControlType.Number },
   cellShape: {
     title: "CellShape",
     options: ["circle", "square"],
@@ -42,40 +40,35 @@ addPropertyControls(SwatchColorPicker, {
     defaultValue: "circle",
     type: ControlType.Enum
   },
-  selectedId: {
-    title: "SelectedId",
-    defaultValue: "",
-    type: ControlType.String
-  },
   disabled: {
     title: "Disabled",
     defaultValue: false,
     type: ControlType.Boolean
   },
-  positionInSet: { title: "PositionInSet", type: ControlType.Number },
-  setSize: { title: "SetSize", type: ControlType.Number },
-  shouldFocusCircularNavigate: {
-    title: "ShouldFocusCircularNavigate",
-    defaultValue: false,
-    type: ControlType.Boolean
+  cellMargin: {
+    title: "CellMargin",
+    type: ControlType.Number,
+    min: 1,
+    max: 200,
+    defaultValue: 5
   },
-  doNotContainWithinFocusZone: {
-    title: "DoNotContainWithinFocusZone",
-    defaultValue: false,
-    type: ControlType.Boolean
+  cellSize: {
+    title: "CellHeight",
+    type: ControlType.Number,
+    min: 1,
+    max: 200,
+    defaultValue: 50
   },
-  cellMargin: { title: "CellMargin", type: ControlType.Number },
-  cellHeight: { title: "CellHeight", type: ControlType.Number },
-  cellWidth: { title: "CellWidth", type: ControlType.Number },
   cellBorderWidth: { title: "CellBorderWidth", type: ControlType.Number },
-  focusOnHover: {
-    title: "FocusOnHover",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  mouseLeaveParentSelector: {
-    title: "MouseLeaveParentSelector",
-    defaultValue: "",
-    type: ControlType.String
+  colors: {
+    type: ControlType.Array,
+    propertyControl: {
+      type: ControlType.Color
+    },
+    defaultValue: [
+      colors["exchange.primary"],
+      colors["office.primary"],
+      colors["excel.primary"]
+    ]
   }
 });

@@ -20,4 +20,8 @@ export const colors = Object.freeze({
     "office.background": "var(--token-ecc8e004-e8ba-482e-a94b-36914355c3d5, rgb(250, 249, 248))",
     /** #0072C6 */
     "office.link": "var(--token-c87338da-18c1-4873-b9dd-43e15b0c9775, rgb(0, 114, 198))",
+    /** #217346 */
+    "excel.primary": "var(--token-ae51b870-112c-42b9-bd20-d7d755ac7020, rgb(33, 115, 70))",
+    /** #7719AA */
+    "onenote.primary": "var(--token-3685cd79-4b7e-4f17-83e2-43294bb91f5d, rgb(119, 25, 170))",
 })
