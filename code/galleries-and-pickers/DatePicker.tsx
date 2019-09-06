@@ -7,7 +7,7 @@ import {
   calendarPropertyControls
 } from "../utils/calendarPickers";
 
-const InnerDatePicker: React.SFC = ({ value, ...props }) => {
+const InnerDatePicker = ({ value, ...props }) => {
   return <System.DatePicker {...props} value={ensureValidDateValue(value)} />;
 };
 

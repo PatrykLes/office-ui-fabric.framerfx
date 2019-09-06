@@ -1,14 +1,13 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
-import { withHOC } from "../utils/withHOC";
+import * as React from "react";
 import {
-  ensureValidDateValue,
   calendarPickerStrings,
-  calendarPropertyControls
+  ensureValidDateValue
 } from "../utils/calendarPickers";
+import { withHOC } from "../utils/withHOC";
 
-const InnerCalendar: React.SFC = ({ value, ...props }) => {
+const InnerCalendar = ({ value, ...props }) => {
   return (
     <System.Calendar
       {...props}
@@ -21,77 +20,39 @@ const InnerCalendar: React.SFC = ({ value, ...props }) => {
 export const Calendar = withHOC(InnerCalendar);
 
 Calendar.defaultProps = {
-  width: 215,
-  height: 244
+  width: 475,
+  height: 275
 };
 
 addPropertyControls(Calendar, {
-  value: {
-    title: "Value",
-    defaultValue: new Date().toISOString(),
+  day: {
+    title: "Day",
+    defaultValue: "2019-01-20",
     type: ControlType.String
-  },
-  isMonthPickerVisible: {
-    title: "IsMonthPickerVisible",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  showMonthPickerAsOverlay: {
-    title: "ShowMonthPickerAsOverlay",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  isDayPickerVisible: {
-    title: "IsDayPickerVisible",
-    defaultValue: true,
-    type: ControlType.Boolean
-  },
-  autoNavigateOnSelection: {
-    title: "AutoNavigateOnSelection",
-    defaultValue: false,
-    type: ControlType.Boolean
   },
   showGoToToday: {
     title: "ShowGoToToday",
-    defaultValue: false,
+    defaultValue: true,
     type: ControlType.Boolean
   },
-  highlightCurrentMonth: {
-    title: "HighlightCurrentMonth",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  highlightSelectedMonth: {
-    title: "HighlightSelectedMonth",
-    defaultValue: false,
+  isMonthPickerVisible: {
+    title: "Month Picker",
+    defaultValue: true,
     type: ControlType.Boolean
   },
   showWeekNumbers: {
     title: "ShowWeekNumbers",
-    defaultValue: false,
+    defaultValue: true,
     type: ControlType.Boolean
   },
-  dateRangeType: calendarPropertyControls.dateRangeType,
-  firstDayOfWeek: calendarPropertyControls.firstDayOfWeek,
-  firstWeekOfYear: calendarPropertyControls.firstWeekOfYear,
   showSixWeeksByDefault: {
-    title: "ShowSixWeeksByDefault",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  selectDateOnClick: {
-    title: "SelectDateOnClick",
+    title: "Show Six Weeks By Default",
     defaultValue: false,
     type: ControlType.Boolean
   },
   showCloseButton: {
     title: "ShowCloseButton",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  allFocusable: {
-    title: "AllFocusable",
-    defaultValue: false,
+    defaultValue: true,
     type: ControlType.Boolean
   },
   yearPickerHidden: {

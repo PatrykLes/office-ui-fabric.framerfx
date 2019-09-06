@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { people } from "@uifabric/example-data";
+import { addPropertyControls, ControlType } from "framer";
+import * as System from "office-ui-fabric-react";
+import * as React from "react";
 import { withHOC } from "../utils/withHOC";
 
 const suggestionProps: System.IBasePickerSuggestionsProps = {
@@ -62,8 +62,8 @@ const InnerCompactPeoplePicker: React.SFC = props => {
 export const CompactPeoplePicker = withHOC(InnerCompactPeoplePicker);
 
 CompactPeoplePicker.defaultProps = {
-  width: 150,
-  height: 50
+  width: 250,
+  height: 100
 };
 
 addPropertyControls(CompactPeoplePicker, {
@@ -75,7 +75,7 @@ addPropertyControls(CompactPeoplePicker, {
   },
   searchingText: {
     title: "SearchingText",
-    defaultValue: "",
+    defaultValue: "Searching",
     type: ControlType.String
   },
   disabled: {
@@ -83,15 +83,12 @@ addPropertyControls(CompactPeoplePicker, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  itemLimit: { title: "ItemLimit", type: ControlType.Number },
-  removeButtonAriaLabel: {
-    title: "RemoveButtonAriaLabel",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  enableSelectedSuggestionAlert: {
-    title: "EnableSelectedSuggestionAlert",
-    defaultValue: false,
-    type: ControlType.Boolean
+  itemLimit: {
+    title: "ItemLimit",
+    type: ControlType.Number,
+    min: 1,
+    max: 20,
+    displayStepper: true,
+    defaultValue: 3
   }
 });

@@ -1,9 +1,10 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
+import * as React from "react";
+import { colors } from "../canvas";
 import { withHOC } from "../utils/withHOC";
 
-const InnerColorPicker: React.SFC = props => {
+const InnerColorPicker = props => {
   return <System.ColorPicker {...props} />;
 };
 
@@ -15,34 +16,38 @@ ColorPicker.defaultProps = {
 };
 
 addPropertyControls(ColorPicker, {
-  color: { title: "Color", defaultValue: "", type: ControlType.String },
+  color: {
+    title: "Color",
+    type: ControlType.Color,
+    defaultValue: colors["exchange.primary"]
+  },
   alphaSliderHidden: {
     title: "AlphaSliderHidden",
     defaultValue: false,
     type: ControlType.Boolean
   },
   hexLabel: {
-    title: "HexLabel",
+    title: "Hex Label",
     defaultValue: "Hex",
     type: ControlType.String
   },
   redLabel: {
-    title: "RedLabel",
+    title: "Red Label",
     defaultValue: "Red",
     type: ControlType.String
   },
   greenLabel: {
-    title: "GreenLabel",
+    title: "Green Label",
     defaultValue: "Green",
     type: ControlType.String
   },
   blueLabel: {
-    title: "BlueLabel",
+    title: "Blue Label",
     defaultValue: "Blue",
     type: ControlType.String
   },
   alphaLabel: {
-    title: "AlphaLabel",
+    title: "Alpha Label",
     defaultValue: "Alpha",
     type: ControlType.String
   }
