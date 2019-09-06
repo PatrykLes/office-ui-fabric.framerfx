@@ -21,7 +21,8 @@ addPropertyControls(PersonaCoin, {
   text: { title: "Text", defaultValue: "John Doe", type: ControlType.String },
   imageUrl: {
     title: "ImageUrl",
-    defaultValue: "https://api.adorable.io/avatars/90/charly.png",
+    defaultValue:
+      "https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png",
     type: ControlType.String
   },
   initialsColor: {
