@@ -2,67 +2,18 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
-
-const dayPickerStrings: System.ICalendarStrings = {
-  months: [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ],
-  shortMonths: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ],
-  days: [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ],
-  shortDays: ["S", "M", "T", "W", "T", "F", "S"],
-  goToToday: "Go to today",
-  weekNumberFormatString: "Week number {0}",
-  prevMonthAriaLabel: "Previous month",
-  nextMonthAriaLabel: "Next month",
-  prevYearAriaLabel: "Previous year",
-  nextYearAriaLabel: "Next year",
-  prevYearRangeAriaLabel: "Previous year range",
-  nextYearRangeAriaLabel: "Next year range",
-  closeButtonAriaLabel: "Close"
-};
+import {
+  ensureValidDateValue,
+  calendarPickerStrings,
+  calendarPropertyControls
+} from "../utils/calendarPickers";
 
 const InnerCalendar: React.SFC = ({ value, ...props }) => {
-  const currentDate = isNaN(new Date(value).valueOf())
-    ? new Date()
-    : new Date(value);
-
   return (
     <System.Calendar
       {...props}
-      value={currentDate}
-      strings={dayPickerStrings}
+      value={ensureValidDateValue(value)}
+      strings={calendarPickerStrings}
     />
   );
 };
@@ -120,24 +71,9 @@ addPropertyControls(Calendar, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  dateRangeType: {
-    title: "DateRangeType",
-    type: ControlType.Enum,
-    options: Object.keys(System.DateRangeType).filter(key => !isNaN(key)),
-    optionTitles: Object.keys(System.DateRangeType).filter(key => isNaN(key))
-  },
-  firstDayOfWeek: {
-    title: "FirstDayOfWeek",
-    type: ControlType.Enum,
-    options: Object.keys(System.DayOfWeek).filter(key => !isNaN(key)),
-    optionTitles: Object.keys(System.DayOfWeek).filter(key => isNaN(key))
-  },
-  firstWeekOfYear: {
-    title: "FirstWeekOfYear",
-    type: ControlType.Enum,
-    options: Object.keys(System.FirstWeekOfYear).filter(key => !isNaN(key)),
-    optionTitles: Object.keys(System.FirstWeekOfYear).filter(key => isNaN(key))
-  },
+  dateRangeType: calendarPropertyControls.dateRangeType,
+  firstDayOfWeek: calendarPropertyControls.firstDayOfWeek,
+  firstWeekOfYear: calendarPropertyControls.firstWeekOfYear,
   showSixWeeksByDefault: {
     title: "ShowSixWeeksByDefault",
     defaultValue: false,
