@@ -2,25 +2,43 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
+import {
+  ensureValidDateValue,
+  calendarPropertyControls
+} from "../utils/calendarPickers";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
-
-const InnerDatePicker: React.SFC = props => {
-  return <System.DatePicker {...props} style={style} />;
+const InnerDatePicker: React.SFC = ({ value, ...props }) => {
+  return <System.DatePicker {...props} value={ensureValidDateValue(value)} />;
 };
 
 export const DatePicker = withHOC(InnerDatePicker);
 
 DatePicker.defaultProps = {
   width: 150,
-  height: 50
+  height: 61
 };
 
 addPropertyControls(DatePicker, {
-  label: { title: "Label", defaultValue: "", type: ControlType.String },
+  value: {
+    title: "Value",
+    defaultValue: new Date().toISOString(),
+    type: ControlType.String
+  },
+  label: {
+    title: "Label",
+    defaultValue: "DatePicker",
+    type: ControlType.String
+  },
+  isMonthPickerVisible: {
+    title: "IsMonthPickerVisible",
+    defaultValue: false,
+    type: ControlType.Boolean
+  },
+  showMonthPickerAsOverlay: {
+    title: "ShowMonthPickerAsOverlay",
+    defaultValue: false,
+    type: ControlType.Boolean
+  },
   isRequired: {
     title: "IsRequired",
     defaultValue: false,
@@ -31,24 +49,8 @@ addPropertyControls(DatePicker, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  ariaLabel: { title: "AriaLabel", defaultValue: "", type: ControlType.String },
   underlined: {
     title: "Underlined",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  pickerAriaLabel: {
-    title: "PickerAriaLabel",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  isMonthPickerVisible: {
-    title: "IsMonthPickerVisible",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  showMonthPickerAsOverlay: {
-    title: "ShowMonthPickerAsOverlay",
     defaultValue: false,
     type: ControlType.Boolean
   },
@@ -67,7 +69,8 @@ addPropertyControls(DatePicker, {
     defaultValue: "",
     type: ControlType.String
   },
-  firstDayOfWeek: { title: "FirstDayOfWeek", type: ControlType.Number },
+  firstDayOfWeek: calendarPropertyControls.firstDayOfWeek,
+  firstWeekOfYear: calendarPropertyControls.firstWeekOfYear,
   highlightCurrentMonth: {
     title: "HighlightCurrentMonth",
     defaultValue: false,
@@ -83,7 +86,6 @@ addPropertyControls(DatePicker, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  firstWeekOfYear: { title: "FirstWeekOfYear", type: ControlType.Number },
   showGoToToday: {
     title: "ShowGoToToday",
     defaultValue: false,
@@ -94,7 +96,6 @@ addPropertyControls(DatePicker, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
   allFocusable: {
     title: "AllFocusable",
     defaultValue: false,

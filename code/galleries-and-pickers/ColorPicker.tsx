@@ -3,20 +3,15 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
-
 const InnerColorPicker: React.SFC = props => {
-  return <System.ColorPicker {...props} style={style} />;
+  return <System.ColorPicker {...props} />;
 };
 
 export const ColorPicker = withHOC(InnerColorPicker);
 
 ColorPicker.defaultProps = {
-  width: 150,
-  height: 50
+  width: 286,
+  height: 361
 };
 
 addPropertyControls(ColorPicker, {
@@ -26,18 +21,29 @@ addPropertyControls(ColorPicker, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  hexLabel: { title: "HexLabel", defaultValue: "", type: ControlType.String },
-  redLabel: { title: "RedLabel", defaultValue: "", type: ControlType.String },
+  hexLabel: {
+    title: "HexLabel",
+    defaultValue: "Hex",
+    type: ControlType.String
+  },
+  redLabel: {
+    title: "RedLabel",
+    defaultValue: "Red",
+    type: ControlType.String
+  },
   greenLabel: {
     title: "GreenLabel",
-    defaultValue: "",
+    defaultValue: "Green",
     type: ControlType.String
   },
-  blueLabel: { title: "BlueLabel", defaultValue: "", type: ControlType.String },
+  blueLabel: {
+    title: "BlueLabel",
+    defaultValue: "Blue",
+    type: ControlType.String
+  },
   alphaLabel: {
     title: "AlphaLabel",
-    defaultValue: "",
+    defaultValue: "Alpha",
     type: ControlType.String
-  },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String }
+  }
 });

@@ -2,32 +2,37 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
+import {
+  ensureValidDateValue,
+  calendarPickerStrings,
+  calendarPropertyControls
+} from "../utils/calendarPickers";
 
-const style: React.CSSProperties = {
-  width: "100%",
-  height: "100%"
-};
-
-const InnerCalendar: React.SFC = props => {
-  return <System.Calendar {...props} style={style} />;
+const InnerCalendar: React.SFC = ({ value, ...props }) => {
+  return (
+    <System.Calendar
+      {...props}
+      value={ensureValidDateValue(value)}
+      strings={calendarPickerStrings}
+    />
+  );
 };
 
 export const Calendar = withHOC(InnerCalendar);
 
 Calendar.defaultProps = {
-  width: 150,
-  height: 50
+  width: 215,
+  height: 244
 };
 
 addPropertyControls(Calendar, {
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
+  value: {
+    title: "Value",
+    defaultValue: new Date().toISOString(),
+    type: ControlType.String
+  },
   isMonthPickerVisible: {
     title: "IsMonthPickerVisible",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  isDayPickerVisible: {
-    title: "IsDayPickerVisible",
     defaultValue: false,
     type: ControlType.Boolean
   },
@@ -36,8 +41,11 @@ addPropertyControls(Calendar, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  firstDayOfWeek: { title: "FirstDayOfWeek", type: ControlType.Number },
-  dateRangeType: { title: "DateRangeType", type: ControlType.Number },
+  isDayPickerVisible: {
+    title: "IsDayPickerVisible",
+    defaultValue: true,
+    type: ControlType.Boolean
+  },
   autoNavigateOnSelection: {
     title: "AutoNavigateOnSelection",
     defaultValue: false,
@@ -45,11 +53,6 @@ addPropertyControls(Calendar, {
   },
   showGoToToday: {
     title: "ShowGoToToday",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  shouldFocusOnMount: {
-    title: "ShouldFocusOnMount",
     defaultValue: false,
     type: ControlType.Boolean
   },
@@ -68,7 +71,9 @@ addPropertyControls(Calendar, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  firstWeekOfYear: { title: "FirstWeekOfYear", type: ControlType.Number },
+  dateRangeType: calendarPropertyControls.dateRangeType,
+  firstDayOfWeek: calendarPropertyControls.firstDayOfWeek,
+  firstWeekOfYear: calendarPropertyControls.firstWeekOfYear,
   showSixWeeksByDefault: {
     title: "ShowSixWeeksByDefault",
     defaultValue: false,
@@ -93,10 +98,5 @@ addPropertyControls(Calendar, {
     title: "YearPickerHidden",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
   }
 });
