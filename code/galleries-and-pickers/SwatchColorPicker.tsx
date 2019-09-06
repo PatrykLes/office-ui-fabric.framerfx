@@ -5,10 +5,6 @@ import { withHOC } from "../utils/withHOC";
 import { colors } from "../canvas";
 
 const InnerSwatchColorPicker = ({ cellSize, colors, ...props }) => {
-  const [selectedColorId, setSelectedColorId] = React.useState(
-    props.selectedId
-  );
-
   const colorCells = colors.map(color => {
     return { id: color, color, label: color };
   });
@@ -16,7 +12,6 @@ const InnerSwatchColorPicker = ({ cellSize, colors, ...props }) => {
   return (
     <System.SwatchColorPicker
       {...props}
-      selectedId={selectedColorId}
       cellHeight={cellSize}
       cellWidth={cellSize}
       columnCount={colorCells.length}
