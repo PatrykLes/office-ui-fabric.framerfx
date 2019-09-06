@@ -2,6 +2,7 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
+import { colors } from "../canvas";
 
 const style: React.CSSProperties = {
   width: "100%",
@@ -15,46 +16,42 @@ const InnerPersona: React.SFC = props => {
 export const Persona = withHOC(InnerPersona);
 
 Persona.defaultProps = {
-  width: 150,
-  height: 50
+  width: 270,
+  height: 120,
+  imageShouldStartVisible: true
 };
 
 addPropertyControls(Persona, {
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
-  text: { title: "Text", defaultValue: "", type: ControlType.String },
-  size: { title: "Size", type: ControlType.Number },
-  imageShouldFadeIn: {
-    title: "ImageShouldFadeIn",
-    defaultValue: false,
-    type: ControlType.Boolean
+  text: { title: "Name", defaultValue: "John Doe", type: ControlType.String },
+  size: {
+    title: "Size",
+    type: ControlType.Number,
+    min: 1,
+    max: 6,
+    defaultValue: 5,
+    displayStepper: true
   },
-  imageShouldStartVisible: {
-    title: "ImageShouldStartVisible",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  imageUrl: { title: "ImageUrl", defaultValue: "", type: ControlType.String },
-  imageAlt: { title: "ImageAlt", defaultValue: "", type: ControlType.String },
-  imageInitials: {
-    title: "ImageInitials",
-    defaultValue: "",
+  imageUrl: {
+    title: "ImageUrl",
+    defaultValue:
+      "https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png",
     type: ControlType.String
-  },
-  allowPhoneInitials: {
-    title: "AllowPhoneInitials",
-    defaultValue: false,
-    type: ControlType.Boolean
   },
   initialsColor: {
     title: "InitialsColor",
-    defaultValue: "",
-    type: ControlType.String
+    defaultValue: colors["exchange.primary"],
+    type: ControlType.Color,
+    hidden(props) {
+      return !!props["imageUrl"];
+    }
   },
-  presence: { title: "Presence", type: ControlType.Number },
-  presenceTitle: {
-    title: "PresenceTitle",
-    defaultValue: "",
-    type: ControlType.String
+  presence: {
+    title: "Presence",
+    type: ControlType.Number,
+    min: 1,
+    max: 5,
+    defaultValue: 4,
+    displayStepper: true
   },
   isOutOfOffice: {
     title: "IsOutOfOffice",
@@ -63,48 +60,15 @@ addPropertyControls(Persona, {
   },
   secondaryText: {
     title: "SecondaryText",
-    defaultValue: "",
+    defaultValue: "Software Engineer",
     type: ControlType.String
   },
   tertiaryText: {
     title: "TertiaryText",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  optionalText: {
-    title: "OptionalText",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  hidePersonaDetails: {
-    title: "HidePersonaDetails",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  showSecondaryText: {
-    title: "ShowSecondaryText",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  showUnknownPersonaCoin: {
-    title: "ShowUnknownPersonaCoin",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  showInitialsUntilImageLoads: {
-    title: "ShowInitialsUntilImageLoads",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  coinSize: { title: "CoinSize", type: ControlType.Number },
-  primaryText: {
-    title: "PrimaryText",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
+    defaultValue: "In a meeting",
+    type: ControlType.String,
+    hidden(props) {
+      return props["size"] < 4;
+    }
   }
 });

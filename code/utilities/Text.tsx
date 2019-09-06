@@ -1,6 +1,7 @@
 import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
 import * as React from "react";
+import { centeredChildStyles } from "../utils/CenteredWrapper";
 import { compose } from "../utils/compose";
 import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
 import { withManagedState } from "../utils/stateManagement/withManagedState";
@@ -8,7 +9,7 @@ import { withHOC } from "../utils/withHOC";
 
 const InnerText: React.SFC<any> = ({ text, color, ...props }) => {
   return (
-    <System.Text {...props} style={{ color }}>
+    <System.Text {...props} style={{ ...centeredChildStyles, color }}>
       {text}
     </System.Text>
   );

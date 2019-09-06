@@ -16,12 +16,12 @@
 	"author": "Fernando Hurtado",
 	"dependencies": {
 		"@uifabric/example-data": "^7.0.1",
-		"office-ui-fabric-react": "^7.28.2",
+		"office-ui-fabric-react": "^7.31.0",
 		"reactn": "^2.2.2"
 	},
 	"scripts": {
 		"format": "prettier --write './code/**'"
 	},
 	"name": "@framer/fhur.office-ui-fabric",
-	"version": "1.0.0"
+	"version": "1.1.0"
 }

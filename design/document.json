@@ -29,10 +29,10 @@
                 "children" : [
                   {
                     "__class" : "CodeComponentNode",
-                    "aspectRatio" : null,
+                    "aspectRatio" : 4.541666666666667,
                     "bottom" : null,
-                    "centerAnchorX" : 0,
-                    "centerAnchorY" : 0,
+                    "centerAnchorX" : 0.15482954545454544,
+                    "centerAnchorY" : 0.043478260869565216,
                     "children" : [
 
                     ],
@@ -59,7 +59,7 @@
                     "id" : "aR6voDvZJ",
                     "intrinsicHeight" : 34,
                     "intrinsicWidth" : 150,
-                    "left" : 35,
+                    "left" : null,
                     "locked" : false,
                     "name" : null,
                     "opacity" : 1,
@@ -75,7 +75,7 @@
                     "radiusTopRight" : 0,
                     "right" : null,
                     "rotation" : 0,
-                    "top" : 105,
+                    "top" : null,
                     "visible" : true,
                     "width" : 109,
                     "widthType" : 0
@@ -92,7 +92,7 @@
                       {
                         "__class" : "CodeComponentNode",
                         "aspectRatio" : null,
-                        "bottom" : null,
+                        "bottom" : 9,
                         "centerAnchorX" : 0.5,
                         "centerAnchorY" : 0.5,
                         "children" : [
@@ -105,8 +105,8 @@
                           "color" : "#000",
                           "nowrap" : false,
                           "shouldUseGlobalState" : false,
-                          "text" : "Register",
-                          "variant" : "xLarge"
+                          "text" : "Sign in",
+                          "variant" : "xxLarge"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -121,7 +121,7 @@
                         "fillImagePixelWidth" : null,
                         "fillImageResize" : "fill",
                         "fillType" : "color",
-                        "height" : 28,
+                        "height" : 38,
                         "heightType" : 0,
                         "id" : "WU2sv7UYk",
                         "intrinsicHeight" : 50,
@@ -142,9 +142,9 @@
                         "radiusTopRight" : 0,
                         "right" : 0,
                         "rotation" : 0,
-                        "top" : null,
+                        "top" : 9,
                         "visible" : true,
-                        "width" : 150,
+                        "width" : 352,
                         "widthType" : 0
                       }
                     ],
@@ -226,7 +226,7 @@
                           "description" : "",
                           "disabled" : false,
                           "errorMessage" : "",
-                          "globalStateKey" : "email ",
+                          "globalStateKey" : "email",
                           "label" : "",
                           "multiline" : false,
                           "placeholder" : "Email address, telephone number or Skype ID",
@@ -342,8 +342,8 @@
                         "__class" : "CodeComponentNode",
                         "aspectRatio" : null,
                         "bottom" : null,
-                        "centerAnchorX" : 0.10227272727272728,
-                        "centerAnchorY" : 0.5,
+                        "centerAnchorX" : 0.082386363636363633,
+                        "centerAnchorY" : 0.30555555555555558,
                         "children" : [
 
                         ],
@@ -355,7 +355,7 @@
                           "nowrap" : false,
                           "shouldUseGlobalState" : false,
                           "text" : "No account?",
-                          "variant" : "small"
+                          "variant" : "xSmall"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -370,7 +370,7 @@
                         "fillImagePixelWidth" : null,
                         "fillImageResize" : "fill",
                         "fillType" : "color",
-                        "height" : 18,
+                        "height" : 22,
                         "heightType" : 0,
                         "id" : "I9bBMrhJy",
                         "intrinsicHeight" : 50,
@@ -391,29 +391,27 @@
                         "radiusTopRight" : 0,
                         "right" : null,
                         "rotation" : 0,
-                        "top" : null,
+                        "top" : 0,
                         "visible" : true,
-                        "width" : 72,
+                        "width" : 58,
                         "widthType" : 0
                       },
                       {
                         "__class" : "CodeComponentNode",
                         "aspectRatio" : null,
                         "bottom" : null,
-                        "centerAnchorX" : 0.34517045454545453,
-                        "centerAnchorY" : 0.5,
+                        "centerAnchorX" : 0.28977272727272729,
+                        "centerAnchorY" : 0.30555555555555558,
                         "children" : [
 
                         ],
                         "clip" : true,
-                        "codeComponentIdentifier" : ".\/utilities\/Text.tsx_Text",
+                        "codeComponentIdentifier" : ".\/basic-inputs\/Link.tsx_Link",
                         "codeComponentProps" : {
-                          "block" : false,
-                          "color" : "var(--token-032cc032-743f-4fe9-b7f1-eed9613c0ece, rgb(0, 120, 212)) \/* {\"name\":\"exchange.primary\"} *\/",
-                          "nowrap" : false,
+                          "disabled" : false,
+                          "href" : "",
                           "shouldUseGlobalState" : false,
-                          "text" : "Make an account",
-                          "variant" : "small"
+                          "text" : "Create one!"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -428,11 +426,11 @@
                         "fillImagePixelWidth" : null,
                         "fillImageResize" : "fill",
                         "fillType" : "color",
-                        "height" : 18,
+                        "height" : 22,
                         "heightType" : 0,
-                        "id" : "xoL7B3XNd",
-                        "intrinsicHeight" : 50,
-                        "intrinsicWidth" : 150,
+                        "id" : "WqDKzdz_E",
+                        "intrinsicHeight" : 18,
+                        "intrinsicWidth" : 25,
                         "left" : 72,
                         "locked" : false,
                         "name" : null,
@@ -449,9 +447,9 @@
                         "radiusTopRight" : 0,
                         "right" : null,
                         "rotation" : 0,
-                        "top" : null,
+                        "top" : 0,
                         "visible" : true,
-                        "width" : 99,
+                        "width" : 60,
                         "widthType" : 0
                       }
                     ],
@@ -519,20 +517,18 @@
                         "__class" : "CodeComponentNode",
                         "aspectRatio" : null,
                         "bottom" : null,
-                        "centerAnchorX" : 0.5,
+                        "centerAnchorX" : 0.17755681818181818,
                         "centerAnchorY" : 0.25,
                         "children" : [
 
                         ],
                         "clip" : true,
-                        "codeComponentIdentifier" : ".\/utilities\/Text.tsx_Text",
+                        "codeComponentIdentifier" : ".\/basic-inputs\/Link.tsx_Link",
                         "codeComponentProps" : {
-                          "block" : false,
-                          "color" : "var(--token-032cc032-743f-4fe9-b7f1-eed9613c0ece, rgb(0, 120, 212)) \/* {\"name\":\"exchange.primary\"} *\/",
-                          "nowrap" : false,
+                          "disabled" : false,
+                          "href" : "",
                           "shouldUseGlobalState" : false,
-                          "text" : "Have you lost access to your account?",
-                          "variant" : "small"
+                          "text" : "Sign in with a security key "
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -549,10 +545,10 @@
                         "fillType" : "color",
                         "height" : 18,
                         "heightType" : 0,
-                        "id" : "bGcCuHQeI",
-                        "intrinsicHeight" : 50,
-                        "intrinsicWidth" : 150,
-                        "left" : null,
+                        "id" : "RqvMWwHa1",
+                        "intrinsicHeight" : 18,
+                        "intrinsicWidth" : 25,
+                        "left" : 0,
                         "locked" : false,
                         "name" : null,
                         "opacity" : 1,
@@ -570,7 +566,7 @@
                         "rotation" : 0,
                         "top" : 0,
                         "visible" : true,
-                        "width" : 1,
+                        "width" : 0.35511363636363635,
                         "widthType" : 1
                       }
                     ],
@@ -644,14 +640,12 @@
 
                         ],
                         "clip" : true,
-                        "codeComponentIdentifier" : ".\/utilities\/Text.tsx_Text",
+                        "codeComponentIdentifier" : ".\/basic-inputs\/Link.tsx_Link",
                         "codeComponentProps" : {
-                          "block" : false,
-                          "color" : "var(--token-032cc032-743f-4fe9-b7f1-eed9613c0ece, rgb(0, 120, 212)) \/* {\"name\":\"exchange.primary\"} *\/",
-                          "nowrap" : false,
+                          "disabled" : false,
+                          "href" : "",
                           "shouldUseGlobalState" : false,
-                          "text" : "Registration options",
-                          "variant" : "small"
+                          "text" : "Sign-in options"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -668,9 +662,9 @@
                         "fillType" : "color",
                         "height" : 18,
                         "heightType" : 0,
-                        "id" : "NeDZltukM",
-                        "intrinsicHeight" : 50,
-                        "intrinsicWidth" : 150,
+                        "id" : "ukuAd6wj5",
+                        "intrinsicHeight" : 18,
+                        "intrinsicWidth" : 25,
                         "left" : null,
                         "locked" : false,
                         "name" : null,
@@ -687,10 +681,10 @@
                         "radiusTopRight" : 0,
                         "right" : null,
                         "rotation" : 0,
-                        "top" : 0,
+                        "top" : null,
                         "visible" : true,
-                        "width" : 1,
-                        "widthType" : 1
+                        "width" : 75,
+                        "widthType" : 0
                       }
                     ],
                     "clip" : true,
@@ -774,22 +768,9 @@
                             "clip" : true,
                             "codeComponentIdentifier" : ".\/basic-inputs\/DefaultButton.tsx_DefaultButton",
                             "codeComponentProps" : {
-                              "allowDisabledFocus" : false,
-                              "checked" : false,
                               "disabled" : false,
-                              "menuIcons" : [
-
-                              ],
-                              "menuItems" : [
-
-                              ],
-                              "placeholder" : "",
                               "primary" : true,
-                              "primaryDisabled" : false,
-                              "secondaryText" : "",
-                              "split" : false,
-                              "text" : "Next Step",
-                              "toggle" : false
+                              "text" : "Next Step"
                             },
                             "codeOverrideEnabled" : false,
                             "constraintsLocked" : false,
@@ -1777,22 +1758,9 @@
                         "clip" : true,
                         "codeComponentIdentifier" : ".\/basic-inputs\/DefaultButton.tsx_DefaultButton",
                         "codeComponentProps" : {
-                          "allowDisabledFocus" : false,
-                          "checked" : false,
                           "disabled" : false,
-                          "menuIcons" : [
-
-                          ],
-                          "menuItems" : [
-
-                          ],
-                          "placeholder" : "",
                           "primary" : false,
-                          "primaryDisabled" : false,
-                          "secondaryText" : "",
-                          "split" : false,
-                          "text" : "Install Office",
-                          "toggle" : false
+                          "text" : "Install Office"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -1845,22 +1813,9 @@
                         "clip" : true,
                         "codeComponentIdentifier" : ".\/basic-inputs\/DefaultButton.tsx_DefaultButton",
                         "codeComponentProps" : {
-                          "allowDisabledFocus" : false,
-                          "checked" : false,
                           "disabled" : false,
-                          "menuIcons" : [
-
-                          ],
-                          "menuItems" : [
-
-                          ],
-                          "placeholder" : "",
                           "primary" : true,
-                          "primaryDisabled" : false,
-                          "secondaryText" : "",
-                          "split" : false,
-                          "text" : "Buy Office 365",
-                          "toggle" : false
+                          "text" : "Buy Office 365"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -5528,7 +5483,7 @@
                         "id" : "I11VgYGaM",
                         "intrinsicHeight" : 66,
                         "intrinsicWidth" : 200,
-                        "left" : null,
+                        "left" : 0,
                         "locked" : false,
                         "name" : null,
                         "opacity" : 1,
@@ -5544,7 +5499,7 @@
                         "radiusTopRight" : 0,
                         "right" : null,
                         "rotation" : 0,
-                        "top" : null,
+                        "top" : 0,
                         "visible" : true,
                         "width" : 1,
                         "widthType" : 3
@@ -5884,7 +5839,7 @@
                         "id" : "XZLXij6au",
                         "intrinsicHeight" : 50,
                         "intrinsicWidth" : 150,
-                        "left" : null,
+                        "left" : 0,
                         "locked" : false,
                         "name" : null,
                         "opacity" : 1,
@@ -5900,7 +5855,7 @@
                         "radiusTopRight" : 0,
                         "right" : null,
                         "rotation" : 0,
-                        "top" : null,
+                        "top" : 0,
                         "visible" : true,
                         "width" : 191,
                         "widthType" : 0
@@ -5917,22 +5872,9 @@
                         "clip" : true,
                         "codeComponentIdentifier" : ".\/basic-inputs\/DefaultButton.tsx_DefaultButton",
                         "codeComponentProps" : {
-                          "allowDisabledFocus" : false,
-                          "checked" : false,
                           "disabled" : false,
-                          "menuIcons" : [
-
-                          ],
-                          "menuItems" : [
-
-                          ],
-                          "placeholder" : "",
                           "primary" : false,
-                          "primaryDisabled" : false,
-                          "secondaryText" : "",
-                          "split" : false,
-                          "text" : "Default Button",
-                          "toggle" : false
+                          "text" : "Default Button"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -5985,22 +5927,9 @@
                         "clip" : true,
                         "codeComponentIdentifier" : ".\/basic-inputs\/DefaultButton.tsx_DefaultButton",
                         "codeComponentProps" : {
-                          "allowDisabledFocus" : false,
-                          "checked" : false,
                           "disabled" : false,
-                          "menuIcons" : [
-
-                          ],
-                          "menuItems" : [
-
-                          ],
-                          "placeholder" : "",
                           "primary" : true,
-                          "primaryDisabled" : false,
-                          "secondaryText" : "",
-                          "split" : false,
-                          "text" : "Primary Button",
-                          "toggle" : false
+                          "text" : "Primary Button"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -6053,22 +5982,9 @@
                         "clip" : true,
                         "codeComponentIdentifier" : ".\/basic-inputs\/DefaultButton.tsx_DefaultButton",
                         "codeComponentProps" : {
-                          "allowDisabledFocus" : false,
-                          "checked" : false,
                           "disabled" : true,
-                          "menuIcons" : [
-
-                          ],
-                          "menuItems" : [
-
-                          ],
-                          "placeholder" : "",
                           "primary" : true,
-                          "primaryDisabled" : false,
-                          "secondaryText" : "",
-                          "split" : false,
-                          "text" : "Disabled Button",
-                          "toggle" : false
+                          "text" : "Disabled Button"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -6121,22 +6037,9 @@
                         "clip" : true,
                         "codeComponentIdentifier" : ".\/basic-inputs\/DefaultButton.tsx_DefaultButton",
                         "codeComponentProps" : {
-                          "allowDisabledFocus" : false,
-                          "checked" : true,
                           "disabled" : false,
-                          "menuIcons" : [
-
-                          ],
-                          "menuItems" : [
-
-                          ],
-                          "placeholder" : "",
                           "primary" : true,
-                          "primaryDisabled" : false,
-                          "secondaryText" : "",
-                          "split" : false,
-                          "text" : "Checked Button",
-                          "toggle" : false
+                          "text" : "Checked Button"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -6180,49 +6083,18 @@
                       {
                         "__class" : "CodeComponentNode",
                         "aspectRatio" : null,
-                        "bottom" : null,
-                        "centerAnchorX" : 0,
-                        "centerAnchorY" : 0,
+                        "bottom" : 5,
+                        "centerAnchorX" : 0.5,
+                        "centerAnchorY" : 0.91295546558704455,
                         "children" : [
 
                         ],
                         "clip" : true,
                         "codeComponentIdentifier" : ".\/basic-inputs\/DefaultButton.tsx_DefaultButton",
                         "codeComponentProps" : {
-                          "allowDisabledFocus" : false,
-                          "checked" : false,
                           "disabled" : false,
-                          "menuIcons" : [
-                            {
-                              "enabled" : true,
-                              "type" : "string",
-                              "value" : "Mail"
-                            },
-                            {
-                              "enabled" : true,
-                              "type" : "string",
-                              "value" : "Unlock"
-                            }
-                          ],
-                          "menuItems" : [
-                            {
-                              "enabled" : true,
-                              "type" : "string",
-                              "value" : "Item 1"
-                            },
-                            {
-                              "enabled" : true,
-                              "type" : "string",
-                              "value" : "Item 2"
-                            }
-                          ],
-                          "placeholder" : "",
                           "primary" : true,
-                          "primaryDisabled" : false,
-                          "secondaryText" : "",
-                          "split" : true,
-                          "text" : "Split Button",
-                          "toggle" : false
+                          "text" : "Split Button"
                         },
                         "codeOverrideEnabled" : false,
                         "constraintsLocked" : false,
@@ -7756,7 +7628,7 @@
               {
                 "__class" : "CodeComponentNode",
                 "aspectRatio" : null,
-                "bottom" : 0,
+                "bottom" : null,
                 "centerAnchorX" : 0.58437499999999998,
                 "centerAnchorY" : 0.5,
                 "children" : [
@@ -8478,9 +8350,9 @@
                       {
                         "__class" : "CodeComponentNode",
                         "aspectRatio" : null,
-                        "bottom" : null,
-                        "centerAnchorX" : 0,
-                        "centerAnchorY" : 0,
+                        "bottom" : -4,
+                        "centerAnchorX" : 0.20942408376963351,
+                        "centerAnchorY" : 0.74404761904761907,
                         "children" : [
 
                         ],
@@ -8505,12 +8377,12 @@
                         "fillImagePixelWidth" : null,
                         "fillImageResize" : "fill",
                         "fillType" : "color",
-                        "height" : 18,
+                        "height" : 51,
                         "heightType" : 0,
                         "id" : "i7H7J6U3D",
                         "intrinsicHeight" : 18,
                         "intrinsicWidth" : 25,
-                        "left" : null,
+                        "left" : 0,
                         "locked" : false,
                         "name" : null,
                         "opacity" : 1,
@@ -9025,7 +8897,7 @@
                 "id" : "pAlRYS8zU",
                 "intrinsicHeight" : null,
                 "intrinsicWidth" : null,
-                "left" : null,
+                "left" : 0,
                 "locked" : false,
                 "name" : null,
                 "opacity" : 1,
@@ -9039,7 +8911,7 @@
                 "radiusPerCorner" : false,
                 "radiusTopLeft" : 0,
                 "radiusTopRight" : 0,
-                "right" : 432,
+                "right" : null,
                 "rotation" : 0,
                 "top" : 0,
                 "visible" : true,

@@ -1,13 +1,17 @@
-import * as React from "react";
+import { addPropertyControls, ControlType, Frame } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
-import { withHOC } from "../utils/withHOC";
+import * as React from "react";
 import { compose } from "../utils/compose";
-import { withManagedState } from "../utils/stateManagement/withManagedState";
 import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
+import { withManagedState } from "../utils/stateManagement/withManagedState";
+import { withHOC } from "../utils/withHOC";
 
-const InnerLink: React.SFC = ({ willChangeTransform, ...props }) => {
-  return <System.Link {...props}>{props.text}</System.Link>;
+const InnerLink = ({ willChangeTransform, href, ...props }) => {
+  return (
+    <System.Link {...props} href={href || undefined}>
+      {props.text}
+    </System.Link>
+  );
 };
 
 export const Link = compose(
@@ -18,7 +22,8 @@ export const Link = compose(
 Link.defaultProps = {
   width: 25,
   height: 18,
-  valuePropName: "text"
+  valuePropName: "text",
+  centerLayout: "flex"
 };
 
 addPropertyControls(Link, {

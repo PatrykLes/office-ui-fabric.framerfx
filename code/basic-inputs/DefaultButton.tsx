@@ -1,9 +1,9 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
+import * as React from "react";
 import { withHOC } from "../utils/withHOC";
 
-const InnerDefaultButton: React.SFC = props => {
+const InnerDefaultButton = props => {
   const menuProps =
     props.split && !!props.menuItems.length
       ? {
@@ -34,51 +34,10 @@ addPropertyControls(DefaultButton, {
     defaultValue: "Default Button",
     type: ControlType.String
   },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
-  },
-  secondaryText: {
-    title: "SecondaryText",
-    defaultValue: "",
-    type: ControlType.String
-  },
   primary: { title: "Primary", defaultValue: false, type: ControlType.Boolean },
   disabled: {
     title: "Disabled",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  allowDisabledFocus: {
-    title: "AllowDisabledFocus",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  primaryDisabled: {
-    title: "PrimaryDisabled",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  checked: { title: "Checked", defaultValue: false, type: ControlType.Boolean },
-  toggle: { title: "Toggle", defaultValue: false, type: ControlType.Boolean },
-  split: { title: "Split", defaultValue: false, type: ControlType.Boolean },
-  menuItems: {
-    title: "Menu Items",
-    type: ControlType.Array,
-    propertyControl: {
-      type: ControlType.String
-    },
-    defaultValue: [],
-    hidden: props => !props.split
-  },
-  menuIcons: {
-    title: "Menu Icons",
-    type: ControlType.Array,
-    propertyControl: {
-      type: ControlType.String
-    },
-    defaultValue: [],
-    hidden: props => !props.split
   }
 });

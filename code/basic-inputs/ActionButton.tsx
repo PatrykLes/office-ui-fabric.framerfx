@@ -1,9 +1,9 @@
-import * as React from "react";
+import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
-import { ControlType, PropertyControls, addPropertyControls } from "framer";
+import * as React from "react";
 import { withHOC } from "../utils/withHOC";
 
-const InnerActionButton: React.SFC = props => {
+const InnerActionButton = props => {
   return (
     <System.ActionButton {...props} iconProps={{ iconName: props.icon }} />
   );
@@ -19,7 +19,7 @@ ActionButton.defaultProps = {
 addPropertyControls(ActionButton, {
   text: {
     title: "Text",
-    defaultValue: "Action Button",
+    defaultValue: "This is the defaul text",
     type: ControlType.String
   },
   icon: {
