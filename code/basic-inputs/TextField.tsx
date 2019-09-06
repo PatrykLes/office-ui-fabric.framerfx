@@ -5,6 +5,7 @@ import { compose } from "../utils/compose";
 import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
 import { withManagedState } from "../utils/stateManagement/withManagedState";
 import { withHOC } from "../utils/withHOC";
+import { centeredChildStyles } from "../utils/CenteredWrapper";
 
 const InnerTextField: React.SFC<any> = ({
   ["children"]: _,
@@ -18,6 +19,7 @@ const InnerTextField: React.SFC<any> = ({
   return (
     <System.TextField
       {...props}
+      styles={{ root: { width: "100%" } }}
       onChange={onChange}
       prefix={prefix || undefined}
       suffix={suffix || undefined}
@@ -33,7 +35,8 @@ export const TextField = compose(
 TextField.defaultProps = {
   width: 150,
   height: 50,
-  valuePropName: "value"
+  valuePropName: "value",
+  centerLayout: "none"
 };
 
 addPropertyControls(TextField, {

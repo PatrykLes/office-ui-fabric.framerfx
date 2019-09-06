@@ -1,10 +1,14 @@
 import * as React from "react";
 
 type Props = {
-  centerLayout: "flex" | "table";
+  centerLayout: "flex" | "table" | "none";
 };
 
 export const CenteredWrapper: React.FC<Props> = props => {
+  if (props.centerLayout === "none") {
+    return <>{props.children}</>;
+  }
+
   if (props.centerLayout === "table") {
     return (
       <div
