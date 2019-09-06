@@ -20,10 +20,10 @@ Spinner.defaultProps = {
 };
 
 addPropertyControls(Spinner, {
-  type: { title: "Type", type: ControlType.Number },
   size: {
     title: "Size",
     type: ControlType.Number,
+    defaultValue: 1,
     min: 0,
     max: 3,
     displayStepper: true

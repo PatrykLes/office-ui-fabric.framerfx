@@ -1,15 +1,11 @@
 import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
 import * as React from "react";
-import { centeredChildStyles, CenteredWrapper } from "../utils/CenteredWrapper";
+import { centeredChildStyles } from "../utils/CenteredWrapper";
 import { withHOC } from "../utils/withHOC";
 
 const InnerShimmer: React.SFC = props => {
-  return (
-    <CenteredWrapper>
-      <System.Shimmer {...props} style={centeredChildStyles} />
-    </CenteredWrapper>
-  );
+  return <System.Shimmer {...props} style={centeredChildStyles} />;
 };
 
 export const Shimmer = withHOC(InnerShimmer);

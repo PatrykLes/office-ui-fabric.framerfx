@@ -1,19 +1,17 @@
 import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
 import * as React from "react";
-import { centeredChildStyles, CenteredWrapper } from "../utils/CenteredWrapper";
+import { centeredChildStyles } from "../utils/CenteredWrapper";
 import { withHOC } from "../utils/withHOC";
 
 const InnerProgressIndicator: React.SFC = props => {
   return (
-    <CenteredWrapper>
-      <System.ProgressIndicator
-        {...props}
-        styles={{
-          root: centeredChildStyles
-        }}
-      />
-    </CenteredWrapper>
+    <System.ProgressIndicator
+      {...props}
+      styles={{
+        root: centeredChildStyles
+      }}
+    />
   );
 };
 
