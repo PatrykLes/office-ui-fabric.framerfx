@@ -15,6 +15,7 @@
 	},
 	"author": "Fernando Hurtado",
 	"dependencies": {
+		"@uifabric/example-data": "^7.0.1",
 		"office-ui-fabric-react": "^7.28.2",
 		"reactn": "^2.2.2"
 	},
