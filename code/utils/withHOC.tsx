@@ -16,7 +16,7 @@ export function withHOC(Component): React.SFC {
 
   return (props: any) => {
     return (
-      <CenteredWrapper>
+      <CenteredWrapper centerLayout={Component.centerLayout}>
         <Component {...props} />
       </CenteredWrapper>
     );

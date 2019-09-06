@@ -40,7 +40,7 @@ addPropertyControls(TextField, {
   label: { title: "Label", defaultValue: "", type: ControlType.String },
   placeholder: {
     title: "Placeholder",
-    defaultValue: "",
+    defaultValue: "placeholder",
     type: ControlType.String
   },
   description: {
