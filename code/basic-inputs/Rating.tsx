@@ -6,6 +6,7 @@ import { RatingSize } from "office-ui-fabric-react";
 import { compose } from "../utils/compose";
 import { withManagedState } from "../utils/stateManagement/withManagedState";
 import { WithManagedStatePropertyControls } from "../utils/stateManagement/propertyControls";
+import { IconPropertyControlDescription } from "../utils/icons";
 
 const InnerRating: React.SFC = props => {
   const onChange = React.useCallback((e, rating) => props.onChange(rating), [
@@ -48,12 +49,8 @@ addPropertyControls(Rating, {
     defaultValue: false,
     type: ControlType.Boolean
   },
-  icon: { title: "Icon", defaultValue: "", type: ControlType.String },
-  unselectedIcon: {
-    title: "UnselectedIcon",
-    defaultValue: "",
-    type: ControlType.String
-  },
+  icon: IconPropertyControlDescription,
+  unselectedIcon: IconPropertyControlDescription,
   size: {
     title: "Size",
     type: ControlType.SegmentedEnum,

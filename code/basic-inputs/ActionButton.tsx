@@ -2,6 +2,7 @@ import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
 import * as React from "react";
 import { withHOC } from "../utils/withHOC";
+import { IconPropertyControlDescription } from "../utils/icons";
 
 const InnerActionButton = props => {
   return (
@@ -22,11 +23,7 @@ addPropertyControls(ActionButton, {
     defaultValue: "This is the defaul text",
     type: ControlType.String
   },
-  icon: {
-    title: "Icon",
-    type: ControlType.String,
-    defaultValue: "AddFriend"
-  },
+  icon: IconPropertyControlDescription,
   disabled: {
     title: "Disabled",
     defaultValue: false,

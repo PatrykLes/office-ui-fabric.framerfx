@@ -4,7 +4,7 @@ import * as System from "office-ui-fabric-react/lib/Icon";
 import * as React from "react";
 import { withHOC } from "../utils/withHOC";
 import { colors } from "../canvas";
-import { iconNames } from "../utils/icons";
+import { iconNames, IconPropertyControlDescription } from "../utils/icons";
 
 const InnerIcon: React.SFC<any> = ({
   width,
@@ -39,12 +39,7 @@ Icon.defaultProps = {
 };
 
 addPropertyControls(Icon, {
-  iconName: {
-    title: "IconName",
-    defaultValue: "Dictionary",
-    type: ControlType.Enum,
-    options: iconNames
-  },
+  iconName: IconPropertyControlDescription,
   color: {
     title: "Color",
     defaultValue: "#000",

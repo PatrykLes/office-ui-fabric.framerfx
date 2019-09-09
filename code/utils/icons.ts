@@ -1,3 +1,5 @@
+import { ControlDescription, ControlType } from "framer";
+
 export const iconNames = [
   "AADLogo",
   "ATPLogo",
@@ -1781,3 +1783,10 @@ export const iconNames = [
   "ZoomOut",
   "ZoomToFit"
 ];
+
+export const IconPropertyControlDescription: ControlDescription = {
+  title: "IconName",
+  defaultValue: "Dictionary",
+  type: ControlType.Enum,
+  options: iconNames
+};
