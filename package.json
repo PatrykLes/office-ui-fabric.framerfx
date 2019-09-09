@@ -22,6 +22,6 @@
 	"scripts": {
 		"format": "prettier --write './code/**'"
 	},
-	"name": "@framer/fhur.office-ui-fabric",
-	"version": "1.2.0"
+	"name": "@framer/framer.office-ui-fabric-react",
+	"version": "1.0.0"
 }
