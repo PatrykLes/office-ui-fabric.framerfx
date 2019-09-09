@@ -7,28 +7,37 @@ import { WithManagedStatePropertyControls } from "../utils/stateManagement/prope
 import { compose } from "../utils/compose";
 import { withManagedState } from "../utils/stateManagement/withManagedState";
 
-const InnerSpinButton: React.SFC = props => {
-  const onIncrement = React.useCallback(
-    value => {
-      const parsedValue = parseInt(value, 10);
-      if (parsedValue === props.max) {
-        return;
-      }
-      props.onChange(parsedValue + 1);
+const useOnDeltaCallback = (
+  onChange: (value: string) => void,
+  delta: number,
+  min: number,
+  max: number
+) => {
+  return React.useCallback(
+    (oldValue: string) => {
+      const parsedValue = parseFloat(oldValue);
+      // Make sure newValue remains in the [min, max] range
+      const newValue = Math.min(Math.max(parsedValue + delta, min), max);
+      onChange(`${newValue}`);
     },
-    [props.onChange, props.max]
+    [onChange, delta, min, max]
+  );
+};
+
+const InnerSpinButton = props => {
+  const onIncrement = useOnDeltaCallback(
+    props.onChange,
+    props.step,
+    props.min,
+    props.max
+  );
+  const onDecrement = useOnDeltaCallback(
+    props.onChange,
+    -props.step,
+    props.min,
+    props.max
   );
 
-  const onDecrement = React.useCallback(
-    value => {
-      const parsedValue = parseInt(value, 10);
-      if (parsedValue === props.min) {
-        return;
-      }
-      props.onChange(parsedValue - 1);
-    },
-    [props.onChange, props.min]
-  );
   return (
     <System.SpinButton
       onIncrement={onIncrement}
@@ -49,31 +58,30 @@ SpinButton.defaultProps = {
   valuePropName: "value"
 };
 
-const positionKeys = Object.keys(Position).filter((key: string | number) =>
-  isNaN(key as any)
-);
-
 addPropertyControls(SpinButton, {
-  title: { title: "Title", defaultValue: "Title", type: ControlType.String },
   label: { title: "Label", defaultValue: "Label", type: ControlType.String },
-  value: { title: "Value", defaultValue: "1", type: ControlType.String },
+  value: {
+    title: "Value",
+    defaultValue: "1",
+    type: ControlType.Number,
+    displayStepper: true
+  },
   min: {
     title: "Min",
     type: ControlType.Number,
-    defaultValue: 0,
     displayStepper: true
   },
   max: {
     title: "Max",
     type: ControlType.Number,
-    defaultValue: 10,
     displayStepper: true
   },
   step: {
     title: "Step",
     type: ControlType.Number,
     defaultValue: 1,
-    displayStepper: true
+    displayStepper: true,
+    step: 1
   },
   disabled: {
     title: "Disabled",
@@ -84,9 +92,9 @@ addPropertyControls(SpinButton, {
     title: "LabelPosition",
     type: ControlType.Enum,
     defaultValue: Position.start,
-    options: positionKeys.map(key => String(Position[key])),
-    optionTitles: positionKeys
+    options: [0, 1, 2, 3],
+    optionTitles: ["Top", "Bottom", "Left", "Right"],
+    displayStepper: true
   },
-  precision: { title: "Precision", type: ControlType.Number },
   ...WithManagedStatePropertyControls
 });
