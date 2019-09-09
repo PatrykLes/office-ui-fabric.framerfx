@@ -34,8 +34,8 @@ const InnerIcon: React.SFC<any> = ({
 export const Icon = withHOC(InnerIcon);
 
 Icon.defaultProps = {
-  width: 12,
-  height: 12
+  width: 90,
+  height: 90
 };
 
 addPropertyControls(Icon, {

@@ -1787,7 +1787,7 @@ export const iconNames = [
 
 export const IconPropertyControlDescription: ControlDescription = {
   title: "IconName",
-  defaultValue: "Dictionary",
+  defaultValue: "Download",
   type: ControlType.Enum,
   options: iconNames
 };
