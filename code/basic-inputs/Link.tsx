@@ -22,8 +22,7 @@ export const Link = compose(
 Link.defaultProps = {
   width: 25,
   height: 18,
-  valuePropName: "text",
-  centerLayout: "flex"
+  valuePropName: "text"
 };
 
 addPropertyControls(Link, {

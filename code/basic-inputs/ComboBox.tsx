@@ -44,7 +44,7 @@ addPropertyControls(ComboBox, {
   },
   placeholder: {
     title: "Placeholder",
-    defaultValue: "",
+    defaultValue: "placeholder",
     type: ControlType.String
   },
   errorMessage: {
@@ -60,11 +60,6 @@ addPropertyControls(ComboBox, {
   required: {
     title: "Required",
     defaultValue: false,
-    type: ControlType.Boolean
-  },
-  autoComplete: {
-    title: "AutoComplete",
-    defaultValue: true,
     type: ControlType.Boolean
   },
   options: {
@@ -87,7 +82,7 @@ addPropertyControls(ComboBox, {
   },
   text: {
     title: "Text",
-    defaultValue: "",
+    defaultValue: "text",
     type: ControlType.String,
     hidden: props => !props.allowFreeform
   },
@@ -103,15 +98,5 @@ addPropertyControls(ComboBox, {
   },
   dropdownWidth: { title: "DropdownWidth", type: ControlType.Number },
   dropdownMaxWidth: { title: "DropdownMaxWidth", type: ControlType.Number },
-  shouldRestoreFocus: {
-    title: "ShouldRestoreFocus",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
-  openOnKeyboardFocus: {
-    title: "OpenOnKeyboardFocus",
-    defaultValue: false,
-    type: ControlType.Boolean
-  },
   ...WithManagedStatePropertyControls
 });

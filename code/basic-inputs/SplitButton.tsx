@@ -24,8 +24,7 @@ export const SplitButton = withHOC(InnerSplitButton);
 
 SplitButton.defaultProps = {
   width: 158,
-  height: 33,
-  centerLayout: "flex"
+  height: 33
 };
 
 addPropertyControls(SplitButton, {

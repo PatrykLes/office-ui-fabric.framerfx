@@ -11,8 +11,7 @@ export const CompoundButton = withHOC(InnerCompoundButton);
 
 CompoundButton.defaultProps = {
   width: 150,
-  height: 80,
-  centerLayout: "flex"
+  height: 80
 };
 
 addPropertyControls(CompoundButton, {

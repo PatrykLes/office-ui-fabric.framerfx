@@ -1,7 +1,7 @@
 import * as React from "react";
 
 type Props = {
-  centerLayout: "flex" | "table" | "none";
+  centerLayout: "flex" | "none";
 };
 
 // XXX: even thought centeredWrapper is a React component, we expose it using lower
@@ -9,23 +9,6 @@ type Props = {
 export const centeredWrapper: React.FC<Props> = props => {
   if (props.centerLayout === "none") {
     return <>{props.children}</>;
-  }
-
-  if (props.centerLayout === "table") {
-    return (
-      <div
-        style={{
-          display: "table",
-          position: "absolute",
-          top: "0",
-          left: "0",
-          height: "100%",
-          width: "100%"
-        }}
-      >
-        {props.children}
-      </div>
-    );
   }
 
   return (

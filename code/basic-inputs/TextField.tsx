@@ -35,8 +35,7 @@ export const TextField = compose(
 TextField.defaultProps = {
   width: 150,
   height: 50,
-  valuePropName: "value",
-  centerLayout: "none"
+  valuePropName: "value"
 };
 
 addPropertyControls(TextField, {
