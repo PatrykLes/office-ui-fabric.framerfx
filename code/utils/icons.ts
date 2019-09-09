@@ -1,4 +1,5 @@
 import { ControlDescription, ControlType } from "framer";
+import { colors } from "../canvas";
 
 export const iconNames = [
   "AADLogo",
@@ -1789,4 +1790,10 @@ export const IconPropertyControlDescription: ControlDescription = {
   defaultValue: "Dictionary",
   type: ControlType.Enum,
   options: iconNames
+};
+
+export const IconColorPropertyControlDescription: ControlDescription = {
+  title: "IconColor",
+  defaultValue: colors["exchange.primary"],
+  type: ControlType.Color
 };

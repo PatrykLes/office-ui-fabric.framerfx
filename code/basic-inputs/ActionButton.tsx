@@ -2,11 +2,26 @@ import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
 import * as React from "react";
 import { withHOC } from "../utils/withHOC";
-import { IconPropertyControlDescription } from "../utils/icons";
+import {
+  IconPropertyControlDescription,
+  IconColorPropertyControlDescription
+} from "../utils/icons";
+import { colors } from "../canvas";
 
 const InnerActionButton = props => {
   return (
-    <System.ActionButton {...props} iconProps={{ iconName: props.icon }} />
+    <System.ActionButton
+      {...props}
+      iconProps={{ iconName: props.icon }}
+      styles={{
+        icon: {
+          color: props.iconColor
+        },
+        label: {
+          color: props.labelColor
+        }
+      }}
+    />
   );
 };
 
@@ -24,6 +39,12 @@ addPropertyControls(ActionButton, {
     type: ControlType.String
   },
   icon: IconPropertyControlDescription,
+  iconColor: IconColorPropertyControlDescription,
+  labelColor: {
+    title: "LabelColor",
+    defaultValue: colors["exchange.primary"],
+    type: ControlType.Color
+  },
   disabled: {
     title: "Disabled",
     defaultValue: false,
