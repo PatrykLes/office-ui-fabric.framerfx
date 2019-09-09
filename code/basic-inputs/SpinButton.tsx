@@ -45,7 +45,7 @@ export const SpinButton = compose(
 
 SpinButton.defaultProps = {
   width: 211,
-  height: 34,
+  height: 80,
   valuePropName: "value"
 };
 
