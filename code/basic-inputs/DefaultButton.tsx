@@ -4,21 +4,7 @@ import * as React from "react";
 import { withHOC } from "../utils/withHOC";
 
 const InnerDefaultButton = props => {
-  const menuProps =
-    props.split && !!props.menuItems.length
-      ? {
-          items: props.menuItems.map((item, index) => ({
-            key: item,
-            text: item,
-            iconProps: props.menuIcons[index]
-              ? {
-                  iconName: props.menuIcons[index]
-                }
-              : undefined
-          }))
-        }
-      : undefined;
-  return <System.DefaultButton {...props} menuProps={menuProps} />;
+  return <System.DefaultButton {...props} />;
 };
 
 export const DefaultButton = withHOC(InnerDefaultButton);
