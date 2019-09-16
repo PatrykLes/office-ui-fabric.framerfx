@@ -3,6 +3,8 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 import { colors } from "../canvas";
+import { parseEnumAsPropertyControl } from "../utils/propertyControls";
+import { PersonaSize, PersonaPresence } from "office-ui-fabric-react";
 
 const style: React.CSSProperties = {
   width: "100%",
@@ -10,7 +12,13 @@ const style: React.CSSProperties = {
 };
 
 const InnerPersona: React.SFC = props => {
-  return <System.Persona {...props} style={style} />;
+  return (
+    <System.Persona
+      {...props}
+      presence={parseInt(props.presence, 10)}
+      style={style}
+    />
+  );
 };
 
 export const Persona = withHOC(InnerPersona);
@@ -23,14 +31,7 @@ Persona.defaultProps = {
 
 addPropertyControls(Persona, {
   text: { title: "Name", defaultValue: "John Doe", type: ControlType.String },
-  size: {
-    title: "Size",
-    type: ControlType.Number,
-    min: 1,
-    max: 6,
-    defaultValue: 5,
-    displayStepper: true
-  },
+  size: parseEnumAsPropertyControl("Size", PersonaSize, PersonaSize.large),
   imageUrl: {
     title: "ImageUrl",
     defaultValue:
@@ -45,14 +46,11 @@ addPropertyControls(Persona, {
       return !!props["imageUrl"];
     }
   },
-  presence: {
-    title: "Presence",
-    type: ControlType.Number,
-    min: 1,
-    max: 5,
-    defaultValue: 4,
-    displayStepper: true
-  },
+  presence: parseEnumAsPropertyControl(
+    "Presence",
+    PersonaPresence,
+    PersonaPresence.online
+  ),
   isOutOfOffice: {
     title: "IsOutOfOffice",
     defaultValue: false,

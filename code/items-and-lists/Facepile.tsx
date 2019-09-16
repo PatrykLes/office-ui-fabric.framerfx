@@ -4,6 +4,7 @@ import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 import { centeredChildStyles } from "../utils/CenteredWrapper";
 import { OverflowButtonType } from "office-ui-fabric-react";
+import { parseEnumAsPropertyControl } from "../utils/propertyControls";
 
 const additionalButtonStyle = {
   marginTop: 0,
@@ -36,10 +37,6 @@ Facepile.defaultProps = {
   width: 150,
   height: 50
 };
-
-const overflowButtonTypeKeys = Object.keys(OverflowButtonType).filter(
-  (key: string | number) => isNaN(key as any)
-);
 
 addPropertyControls(Facepile, {
   maxDisplayablePersonas: {
@@ -79,15 +76,9 @@ addPropertyControls(Facepile, {
     defaultValue: true,
     type: ControlType.Boolean
   },
-  overflowButtonType: {
-    title: "OverflowButtonType",
-    type: ControlType.Enum,
-    options: overflowButtonTypeKeys.map(key => String(OverflowButtonType[key])),
-    optionTitles: overflowButtonTypeKeys,
-    propertyControl: {
-      type: ControlType.Number
-    },
-    displayStepper: true,
-    defaultValue: String(OverflowButtonType[overflowButtonTypeKeys[0]])
-  }
+  overflowButtonType: parseEnumAsPropertyControl(
+    "OverflowButtonType",
+    OverflowButtonType,
+    OverflowButtonType.none
+  )
 });
