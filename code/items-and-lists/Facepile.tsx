@@ -35,7 +35,7 @@ addPropertyControls(Facepile, {
     type: ControlType.Number,
     min: 1,
     max: 6,
-    defaultValue: 10,
+    defaultValue: 2,
     displayStepper: true
   },
   personas: {
