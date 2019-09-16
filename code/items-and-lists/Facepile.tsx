@@ -5,17 +5,26 @@ import { withHOC } from "../utils/withHOC";
 import { centeredChildStyles } from "../utils/CenteredWrapper";
 import { OverflowButtonType } from "office-ui-fabric-react";
 
+const additionalButtonStyle = {
+  marginTop: 0,
+  marginBottom: 4
+};
+
 const InnerFacepile: React.SFC<any> = ({ personas, ...props }) => {
+  if (props.overflowButtonType) {
+    props.overflowButtonProps = {};
+  }
+
   return (
     <System.Facepile
       personas={personas.map(url => ({ imageUrl: url }))}
       {...props}
-      overflowButtonType={OverflowButtonType.descriptive}
+      overflowButtonType={parseInt(props.overflowButtonType, 10)}
       styles={{
         root: centeredChildStyles,
-        addButton: {
-          marginTop: 0
-        }
+        addButton: additionalButtonStyle,
+        overflowButton: additionalButtonStyle,
+        descriptiveOverflowButton: additionalButtonStyle
       }}
     />
   );
@@ -27,6 +36,10 @@ Facepile.defaultProps = {
   width: 150,
   height: 50
 };
+
+const overflowButtonTypeKeys = Object.keys(OverflowButtonType).filter(
+  (key: string | number) => isNaN(key as any)
+);
 
 addPropertyControls(Facepile, {
   maxDisplayablePersonas: {
@@ -68,10 +81,13 @@ addPropertyControls(Facepile, {
   },
   overflowButtonType: {
     title: "OverflowButtonType",
-    type: ControlType.Number,
-    min: 1,
-    max: 3,
+    type: ControlType.Enum,
+    options: overflowButtonTypeKeys.map(key => String(OverflowButtonType[key])),
+    optionTitles: overflowButtonTypeKeys,
+    propertyControl: {
+      type: ControlType.Number
+    },
     displayStepper: true,
-    defaultValue: 1
+    defaultValue: String(OverflowButtonType[overflowButtonTypeKeys[0]])
   }
 });
