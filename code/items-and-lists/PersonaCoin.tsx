@@ -2,10 +2,18 @@ import * as React from "react";
 import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
+import { parseEnumAsPropertyControl } from "../utils/propertyControls";
+import { PersonaPresence } from "office-ui-fabric-react";
 
 const InnerPersonaCoin: React.SFC<any> = ({ width, height, ...props }) => {
   const coinSize = Math.min(width, height);
-  return <System.PersonaCoin {...props} coinSize={coinSize} />;
+  return (
+    <System.PersonaCoin
+      {...props}
+      presence={parseInt(props.presence, 10)}
+      coinSize={coinSize}
+    />
+  );
 };
 
 export const PersonaCoin = withHOC(InnerPersonaCoin);
@@ -29,14 +37,11 @@ addPropertyControls(PersonaCoin, {
     title: "InitialsColor",
     type: ControlType.Color
   },
-  presence: {
-    title: "Presence",
-    type: ControlType.Number,
-    defaultValue: 2,
-    min: 0,
-    max: 4,
-    displayStepper: true
-  },
+  presence: parseEnumAsPropertyControl(
+    "Presence",
+    PersonaPresence,
+    PersonaPresence.online
+  ),
   isOutOfOffice: {
     title: "IsOutOfOffice",
     defaultValue: false,
