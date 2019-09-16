@@ -20,15 +20,9 @@ Overlay.defaultProps = {
 };
 
 addPropertyControls(Overlay, {
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
   isDarkThemed: {
     title: "IsDarkThemed",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
   }
 });

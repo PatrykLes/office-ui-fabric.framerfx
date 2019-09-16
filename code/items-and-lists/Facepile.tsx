@@ -3,13 +3,30 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 import { centeredChildStyles } from "../utils/CenteredWrapper";
+import { OverflowButtonType } from "office-ui-fabric-react";
+import { parseEnumAsPropertyControl } from "../utils/propertyControls";
+
+const additionalButtonStyle = {
+  marginTop: 0,
+  marginBottom: 4
+};
 
 const InnerFacepile: React.SFC<any> = ({ personas, ...props }) => {
+  if (props.overflowButtonType) {
+    props.overflowButtonProps = {};
+  }
+
   return (
     <System.Facepile
       personas={personas.map(url => ({ imageUrl: url }))}
       {...props}
-      styles={{ root: centeredChildStyles }}
+      overflowButtonType={parseInt(props.overflowButtonType, 10)}
+      styles={{
+        root: centeredChildStyles,
+        addButton: additionalButtonStyle,
+        overflowButton: additionalButtonStyle,
+        descriptiveOverflowButton: additionalButtonStyle
+      }}
     />
   );
 };
@@ -35,7 +52,7 @@ addPropertyControls(Facepile, {
     type: ControlType.Number,
     min: 1,
     max: 6,
-    defaultValue: 10,
+    defaultValue: 2,
     displayStepper: true
   },
   personas: {
@@ -59,12 +76,9 @@ addPropertyControls(Facepile, {
     defaultValue: true,
     type: ControlType.Boolean
   },
-  overflowButtonType: {
-    title: "OverflowButtonType",
-    type: ControlType.Number,
-    min: 1,
-    max: 3,
-    displayStepper: true,
-    defaultValue: 1
-  }
+  overflowButtonType: parseEnumAsPropertyControl(
+    "OverflowButtonType",
+    OverflowButtonType,
+    OverflowButtonType.none
+  )
 });

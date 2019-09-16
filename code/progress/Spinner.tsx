@@ -2,6 +2,8 @@ import { addPropertyControls, ControlType } from "framer";
 import * as System from "office-ui-fabric-react";
 import * as React from "react";
 import { withHOC } from "../utils/withHOC";
+import { parseEnumAsPropertyControl } from "../utils/propertyControls";
+import { SpinnerSize } from "office-ui-fabric-react";
 
 const style: React.CSSProperties = {
   width: "100%",
@@ -9,7 +11,9 @@ const style: React.CSSProperties = {
 };
 
 const InnerSpinner: React.SFC = props => {
-  return <System.Spinner {...props} style={style} />;
+  return (
+    <System.Spinner {...props} style={style} size={parseInt(props.size, 10)} />
+  );
 };
 
 export const Spinner = withHOC(InnerSpinner);
@@ -20,14 +24,7 @@ Spinner.defaultProps = {
 };
 
 addPropertyControls(Spinner, {
-  size: {
-    title: "Size",
-    type: ControlType.Number,
-    defaultValue: 1,
-    min: 0,
-    max: 3,
-    displayStepper: true
-  },
+  size: parseEnumAsPropertyControl("Size", SpinnerSize, SpinnerSize.medium),
   label: { title: "Label", defaultValue: "Label", type: ControlType.String },
   labelPosition: {
     title: "LabelPosition",
