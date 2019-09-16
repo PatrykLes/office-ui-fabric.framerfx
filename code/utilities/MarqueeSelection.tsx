@@ -29,11 +29,5 @@ addPropertyControls(MarqueeSelection, {
     title: "IsDraggingConstrainedToRoot",
     defaultValue: false,
     type: ControlType.Boolean
-  },
-  className: { title: "ClassName", defaultValue: "", type: ControlType.String },
-  placeholder: {
-    title: "Placeholder",
-    defaultValue: "",
-    type: ControlType.String
   }
 });
