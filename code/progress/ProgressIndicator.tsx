@@ -8,6 +8,7 @@ const InnerProgressIndicator: React.SFC = props => {
   return (
     <System.ProgressIndicator
       {...props}
+      percentComplete={props.percentComplete / 100}
       styles={{
         root: centeredChildStyles
       }}
@@ -32,14 +33,21 @@ addPropertyControls(ProgressIndicator, {
   percentComplete: {
     title: "PercentComplete",
     type: ControlType.Number,
-    step: 0.01,
+    step: 1,
     min: 0,
-    max: 1
+    max: 100,
+    unit: "%"
   },
   progressHidden: {
     title: "ProgressHidden",
     defaultValue: false,
     type: ControlType.Boolean
   },
-  barHeight: { title: "BarHeight", type: ControlType.Number, defaultValue: 2 }
+  barHeight: {
+    title: "BarHeight",
+    type: ControlType.Number,
+    defaultValue: 2,
+    displayStepper: true,
+    unit: "px"
+  }
 });
