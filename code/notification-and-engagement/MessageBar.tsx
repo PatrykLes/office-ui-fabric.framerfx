@@ -21,8 +21,8 @@ const InnerMessageBar: React.SFC<any> = ({ title, message, ...props }) => {
 export const MessageBar = withHOC(InnerMessageBar);
 
 MessageBar.defaultProps = {
-  width: 150,
-  height: 50
+  width: 415,
+  height: 80
 };
 
 addPropertyControls(MessageBar, {
