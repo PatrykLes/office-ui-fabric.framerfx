@@ -3,13 +3,20 @@ import * as System from "office-ui-fabric-react";
 import { ControlType, PropertyControls, addPropertyControls } from "framer";
 import { withHOC } from "../utils/withHOC";
 import { centeredChildStyles } from "../utils/CenteredWrapper";
+import { OverflowButtonType } from "office-ui-fabric-react";
 
 const InnerFacepile: React.SFC<any> = ({ personas, ...props }) => {
   return (
     <System.Facepile
       personas={personas.map(url => ({ imageUrl: url }))}
       {...props}
-      styles={{ root: centeredChildStyles }}
+      overflowButtonType={OverflowButtonType.descriptive}
+      styles={{
+        root: centeredChildStyles,
+        addButton: {
+          marginTop: 0
+        }
+      }}
     />
   );
 };
